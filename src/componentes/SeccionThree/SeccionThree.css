@@ -1,0 +1,38 @@
+.seccionthree{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.card { 
+    width: 220px;
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.card img {
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+}
+
+.card h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+}

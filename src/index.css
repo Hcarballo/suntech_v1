@@ -1,0 +1,78 @@
+/* ========================= */
+/*   RESET Y CONFIG GLOBAL   */
+/* ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Compatibilidad total para evitar el auto-zoom del texto */
+  -webkit-text-size-adjust: 100%; /* Safari, iOS */
+  -ms-text-size-adjust: 100%;     /* Internet Explorer */
+  text-size-adjust: 100%;         /* Estándar moderno */
+
+  overflow-x: hidden; /* 🔒 Bloquea el scroll horizontal */
+  background-color: #fff;
+  color: #111;
+  scroll-behavior: smooth; /* Suaviza el desplazamiento al hacer scroll */
+}
+
+/* ========================= */
+/*   IMÁGENES Y TEXTOS       */
+/* ========================= */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Textos y encabezados */
+p, h1, h2, h3, h4, h5, h6, span, li, a {
+  word-break: break-word;
+  -webkit-hyphens: auto; /* iOS Safari */
+  hyphens: auto;
+}
+
+/* ========================= */
+/*   ENLACES GENERALES       */
+/* ========================= */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* ========================= */
+/*   BOTONES BASE            */
+/* ========================= */
+button {
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* ========================= */
+/*   LISTAS Y UL             */
+/* ========================= */
+ul, ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* ========================= */
+/*   SCROLL SUAVIZADO        */
+/* ========================= */
+html {
+  scroll-behavior: smooth;
+}

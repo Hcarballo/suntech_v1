@@ -1,0 +1,53 @@
+/* ============================== */
+/*        SECCIÓN UNO (Hero)     */
+/* ============================== */
+.seccionone {
+    background: rgb(252, 252, 251); /* Fondo verde oscuro */
+    padding: 140px 10px 1px 10px;
+    margin: 0;
+    max-width: 100%;
+    text-align: center;
+    color: rgb(7, 7, 7);
+  }
+  
+  /* Overlay del contenido */
+  .tituloinicial {
+    padding: 0;
+    color: inherit; /* Usa el color del contenedor */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+  }
+  
+  .tituloinicial h1 {
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .tituloinicial p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* ============================== */
+  /*         RESPONSIVE             */
+  /* ============================== */
+  @media (max-width: 750px) {
+    .tituloinicial {
+     margin-top: -20px;
+    }
+
+    .tituloinicial h1 {
+      font-size: 1.5rem;
+    }
+  
+    .tituloinicial h2 {
+      font-size: 0.9rem;
+    }
+  }
+  

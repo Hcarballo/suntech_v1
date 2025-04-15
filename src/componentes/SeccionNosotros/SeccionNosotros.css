@@ -1,0 +1,116 @@
+/* ============================== */
+/* SECCIÓN NOSOTROS (DESKTOP)    */
+/* ============================== */
+.seccionnosotros {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Permite que se acomode en varias líneas */
+  justify-content: center;
+  gap: 20px;
+  padding-top: 10px;
+  margin: 20px 0;
+}
+
+/* Contenedor de tarjetas */
+.tarjetas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Contenedor de texto general */
+.texto {
+  padding: 10px;
+  max-width: 800px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+/* Tarjeta individual */
+.seccionnosotros-card {
+  width: 270px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.seccionnosotros-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Contenedor de imagen */
+.seccionnosotros-card-img-container {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+}
+
+/* Imagen circular */
+.seccionnosotros-card-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+/* Cuerpo de la tarjeta */
+.seccionnosotros-card-body {
+  padding: 10px 15px;
+  text-align: center;
+}
+
+/* Título (nombre) */
+.seccionnosotros-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 15px 0 10px 0;
+}
+
+/* Descripción */
+.seccionnosotros-card-description p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.seccionnosotros-card-description h5 {
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+/* ============================== */
+/* RESPONSIVE - MÓVILES           */
+/* ============================== */
+@media (max-width: 768px) {
+  .seccionnosotros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarjetas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .texto {
+    text-align: center;
+    padding: 10px 20px;
+  }
+
+  .seccionnosotros-card {
+    width: 90%;
+    max-width: 300px;
+  }
+}

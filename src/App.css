@@ -1,0 +1,61 @@
+/* ===================== */
+/*    SECCIÓN GENERAL     */
+/* ===================== */
+section {
+  height: 50vh;
+  margin-top: 20px;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* ===================== */
+/*    Capa superpuesta    */
+/* ===================== */
+.overlayfour {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2); /* Fondo oscuro semitransparente */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  color: white;
+  padding: 20px;
+}
+
+/* ===================== */
+/*    TEXTO DE LA CAPA   */
+/* ===================== */
+.overlayfour h1 {
+  font-size: 4rem; /* Tamaño grande para h1 */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.overlayfour p {
+  font-size: 2rem;
+  padding: 0 10px;
+}
+
+/* ===================== */
+/*   RESPONSIÓN PARA MÓVILES*/
+/* ===================== */
+@media (max-width: 768px) {
+  section {
+    height: 25vh; /* Reducimos la altura para pantallas más pequeñas */
+  }
+
+  .overlayfour h1 {
+    padding-top: 30px;
+    font-size: 1.5rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
+  }
+
+  .overlayfour p {
+    font-size: 0.7rem; /* Reducimos el tamaño del párrafo para móviles */
+    padding: 0 5px;
+  }
+}
