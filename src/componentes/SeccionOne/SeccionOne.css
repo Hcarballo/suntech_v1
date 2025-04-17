@@ -19,20 +19,17 @@
     justify-content: center;
     align-items: center;
     margin-top: 25px;
-  }
-  
-  .tituloinicial h1 {
-    font-weight: bold;
-    font-size: 3rem;
-    margin-bottom: 10px;
-  }
-  
-  .tituloinicial p {
+  } 
+ 
+  .frase {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
+    color: green;
   }
+
+
   
   /* ============================== */
   /*         RESPONSIVE             */
