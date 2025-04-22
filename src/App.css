@@ -3,10 +3,16 @@
 /* ===================== */
 section {
   height: 50vh;
-  margin-top: 20px;
+  margin-top: 1rem;
   position: relative;
   background-size: cover;
   background-position: center center;
+  scroll-margin-top: 10rem;
+}
+
+.btninfo {
+  width: 8rem;
+  margin-left: 12px;
 }
 
 /* ===================== */
@@ -34,28 +40,70 @@ section {
   font-size: 4rem; /* Tamaño grande para h1 */
   font-weight: bold;
   margin-bottom: 10px;
+  color: white !important;
 }
 
 .overlayfour p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0 10px;
+  color: white !important;
+  height: 10rem;
 }
 
 /* ===================== */
 /*   RESPONSIÓN PARA MÓVILES*/
 /* ===================== */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   section {
-    height: 25vh; /* Reducimos la altura para pantallas más pequeñas */
+    height: 27vh; /* Reducimos la altura para pantallas más pequeñas */
+    margin-top: 0.5rem;
   }
 
   .overlayfour h1 {
     padding-top: 30px;
     font-size: 1.5rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
+    color: white !important;
   }
 
   .overlayfour p {
     font-size: 0.7rem; /* Reducimos el tamaño del párrafo para móviles */
     padding: 0 5px;
+    color: white !important;
+  }
+
+  .btninfo {
+    width: 4rem;
+    margin-left: 12px;
+    margin-bottom: 10px;
+    font-size: 0.6rem !important;
   }
 }
+
+/* ===================== */
+/*  PAGE TO INFO */
+/* ===================== */
+
+.img_pasos {
+  width: 100%;
+  height: 15rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.row {
+  justify-content: space-around !important;
+}
+
+.col-md-6 p{
+  text-align: left;  
+}
+
+.col-md-6{
+  width: 37% !important;
+}
+
+.lead {
+  font-size: 1.5rem !important;
+}
+
+

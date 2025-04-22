@@ -13,14 +13,14 @@ import SeccionMarcas from "./componentes/SeccionMarcas/SeccionMarcas";
 import SeccionTrabajos from "./componentes/SeccionTrabajos/SeccionTrabajos";
 import SeccionContacto from "./componentes/SeccionContacto/SeccionContacto";
 
-
 const App = () => {
+ 
   return (
     <div>
-      <Navbar />      
+      <Navbar />
       <SeccionOne />
       <SeccionPaneles />
-      <SeccionCamara />     
+      <SeccionCamara />
       <SeccionTanques />
       <SeccionBombas />
       <SeccionMantas />
@@ -28,7 +28,7 @@ const App = () => {
       <SeccionMarcas />
       <SeccionTrabajos />
       <SeccionNosotros />
-      <SeccionContacto />      
+      <SeccionContacto />
     </div>
   )
 }

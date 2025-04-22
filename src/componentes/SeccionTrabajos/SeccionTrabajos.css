@@ -31,7 +31,7 @@
   
   /* Estilo individual de cada imagen */
   .collage-img {
-    width: 350px;
+    width: 20rem;
     max-width: 90%;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -42,7 +42,7 @@
   
   /* Efecto al pasar el mouse */
   .collage-img:hover {
-    transform: scale(1.03);
+    transform: scale(1.3);
   }
   
   /* ============================== */

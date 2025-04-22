@@ -1,8 +1,3 @@
 .seccionpaneles {   
-  background-image: url("/src/assets/imgseccionone.jpg");  
-}
-
-.btninfo {
-  width: 8rem;
-  margin-left: 12px;
+  background-image: url("/src/assets/Background/imgseccionone.jpg");  
 }

@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import "./NavBar.css";
-import logo from "/src/assets/logo_SunTech_2.png";
+import logo from "/src/assets/Logos/logo_SunTech_2.png";
 import CardWidget from "../CardWidget/CardWidget";
 
 
@@ -30,11 +30,11 @@ const Navbar = () => {
           <div className="d-flex flex-column gap-2 text-black">
             <div className="d-flex align-items-center gap-2">
               <i className="bi bi-telephone-fill"></i>
-              <span>+54 9 3413284542 / +54 9 3415919379</span>
+              <span>+54 9 3412587830</span>
             </div>
             <div className="d-flex align-items-center gap-2">
               <i className="bi bi-envelope-fill"></i>
-              <span>consultas@suntech.com</span>
+              <span>admin@suntech.com.ar</span>
             </div>
           </div>
         </div>
@@ -42,11 +42,12 @@ const Navbar = () => {
       <nav className="navbar">
         <ul className="nav-links">
           <li><a href="#inicio" onClick={(e) => handleAnchorClick(e, 'inicio')}>Inicio</a></li>
-          <li><a href="pnls" onClick={(e) => handleAnchorClick(e, 'pnls')}>Fotovoltaica</a></li>
+          <li><a href="#pnls" onClick={(e) => handleAnchorClick(e, 'pnls')}>Fotovoltaica</a></li>
           <li><a href="#cam" onClick={(e) => handleAnchorClick(e, 'cam')}>Videovigilancia</a></li>
-          <li><a href="tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Termotanques</a></li>
+          <li><a href="#tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Termotanques</a></li>
           <li><a href="#bom" onClick={(e) => handleAnchorClick(e, 'bom')}>Bombas de Agua</a></li>
           <li><a href="#mant" onClick={(e) => handleAnchorClick(e, 'mant')}>Climatización de Piscinas</a></li>
+          <li><a href="#nos" onClick={(e) => handleAnchorClick(e, 'nos')}>Nosotros</a></li>
           <li><a href="#cont" onClick={(e) => handleAnchorClick(e, 'cont')}>Contacto</a></li>
           {/*<li ><a className='navbar__cart' href=""><CardWidget /></a></li> */}
         </ul>
@@ -61,11 +62,12 @@ const Navbar = () => {
         <button className="close-btn" onClick={toggleSidebar}>×</button>
         <ul>
           <li><a href="#inicio" onClick={(e) => handleAnchorClick(e, 'inicio')}>Inicio</a></li>
-          <li><a href="pnls" onClick={(e) => handleAnchorClick(e, 'pnls')}>Fotovoltaica</a></li>
+          <li><a href="#pnls" onClick={(e) => handleAnchorClick(e, 'pnls')}>Fotovoltaica</a></li>
           <li><a href="#cam" onClick={(e) => handleAnchorClick(e, 'cam')}>Videovigilancia</a></li>
-          <li><a href="tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Termotanques</a></li>
+          <li><a href="#tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Termotanques</a></li>
           <li><a href="#bom" onClick={(e) => handleAnchorClick(e, 'bom')}>Bombas de Agua</a></li>
           <li><a href="#mant" onClick={(e) => handleAnchorClick(e, 'mant')}>Climatización de Piscinas</a></li>
+          <li><a href="#nos" onClick={(e) => handleAnchorClick(e, 'nos')}>Nosotros</a></li>
           <li><a href="#cont" onClick={(e) => handleAnchorClick(e, 'cont')}>Contacto</a></li>
           {/*<li ><a className='navbar__cart' href=""><CardWidget /></a></li> */}
         </ul>

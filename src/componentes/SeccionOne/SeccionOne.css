@@ -2,49 +2,68 @@
 /*        SECCIÓN UNO (Hero)     */
 /* ============================== */
 .seccionone {
-    background: rgb(252, 252, 251); /* Fondo verde oscuro */
-    padding: 140px 10px 1px 10px;
-    margin: 0;
-    max-width: 100%;
-    text-align: center;
-    color: rgb(7, 7, 7);
+  background: rgb(252, 252, 251);
+  /* Fondo verde oscuro */
+  padding: 140px 10px 1px 10px;
+  margin: 0;
+  max-width: 100%;
+  text-align: center;
+  color: rgb(7, 7, 7);
+}
+
+.logo_uno {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: aparecer 1s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  /* Overlay del contenido */
+}
+
+/* Overlay del contenido */
+.tituloinicial {
+  padding: 0;
+  color: inherit;
+  /* Usa el color del contenedor */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.frase {
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: green;
+}
+
+
+
+/* ============================== */
+/*         RESPONSIVE             */
+/* ============================== */
+@media (max-width: 750px) {
+  .seccionone {
+    padding: 60px 10px 1px 10px;
+  }
+
   .tituloinicial {
-    padding: 0;
-    color: inherit; /* Usa el color del contenedor */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25px;
-  } 
- 
-  .frase {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-    color: green;
+    margin-top: -20px;
   }
 
-
-  
-  /* ============================== */
-  /*         RESPONSIVE             */
-  /* ============================== */
-  @media (max-width: 750px) {
-    .tituloinicial {
-     margin-top: -20px;
-    }
-
-    .tituloinicial h1 {
-      font-size: 1.5rem;
-    }
-  
-    .tituloinicial h2 {
-      font-size: 0.9rem;
-    }
+  .tituloinicial h1 {
+    font-size: 1.5rem;
   }
-  
+
+  .tituloinicial h2 {
+    font-size: 0.9rem;
+  }
+}

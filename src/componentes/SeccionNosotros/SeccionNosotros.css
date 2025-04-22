@@ -2,13 +2,56 @@
 /* SECCIÓN NOSOTROS (DESKTOP)    */
 /* ============================== */
 .seccionnosotros {
+  margin: 0px 0 20px 0;
+  scroll-margin-top: 10rem;
+}
+
+/* Contenedor principal con dos columnas */
+.box-staff-tittle{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 20px 0;
+}
+
+.contenedor-flex {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* Permite que se acomode en varias líneas */
   justify-content: center;
-  gap: 20px;
-  padding-top: 10px;
-  margin: 20px 0;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Columna izquierda: tarjetas y texto */
+.columna-izquierda {
+  flex: 2;
+  border-right: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Columna derecha: staff */
+.columna-derecha {
+  flex: 1;
+  margin-left: 20px;
+  padding-left: 20px;
+  min-width: 250px;
+}
+
+.staff-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.staff-list li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #444;
 }
 
 /* Contenedor de tarjetas */
@@ -28,9 +71,13 @@
   margin: 0 auto;
 }
 
+.texto p {
+font-size: 1.2rem;
+}
+
 /* Tarjeta individual */
 .seccionnosotros-card {
-  width: 270px;
+  width: 230px;
   margin: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -86,31 +133,66 @@
 }
 
 .seccionnosotros-card-description h5 {
-  font-weight: bold;
   margin: 10px 0 5px;
 }
 
+.iso-logos {
+  justify-items: left;
+}
+
+.iso-logo{
+  width: 4rem;
+  border-radius: 10px;
+}
+
 /* ============================== */
-/* RESPONSIVE - MÓVILES           */
+/* RESPONSIVE - MÓVILES (pantallas pequeñas) */
 /* ============================== */
 @media (max-width: 768px) {
-  .seccionnosotros {
+  /* Contenedor principal */
+  .contenedor-flex {
     flex-direction: column;
     align-items: center;
   }
 
-  .tarjetas {
-    flex-direction: column;
-    align-items: center;
+  /* Columna izquierda (tarjetas y texto) */
+  .columna-izquierda {
+    flex: 1;
+    width: 100%;
+    margin-bottom: 30px; /* Separación entre la columna izquierda y la derecha */
   }
 
+  /* Columna derecha (staff) */
+  .columna-derecha {
+    flex: 1;
+    width: 100%;
+    border-left: none;
+    border-top: 2px solid black;
+    padding-left: 0;
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  /* Título staff */
+  .staff-title {
+    text-align: center;
+  }
+
+  /* Lista de staff */
+  .staff-list li {
+    text-align: left;
+  }
+
+  /* Tarjetas */
+  .seccionnosotros-card {
+    width: 70%;
+    max-width: 300px;
+  }
+
+  /* Texto general */
   .texto {
     text-align: center;
     padding: 10px 20px;
-  }
-
-  .seccionnosotros-card {
-    width: 90%;
-    max-width: 300px;
   }
 }

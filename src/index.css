@@ -19,12 +19,12 @@ html, body {
   /* Compatibilidad total para evitar el auto-zoom del texto */
   -webkit-text-size-adjust: 100%; /* Safari, iOS */
   -ms-text-size-adjust: 100%;     /* Internet Explorer */
-  text-size-adjust: 100%;         /* Estándar moderno */
+   text-size-adjust: 100%;         /* Estándar moderno */
 
   overflow-x: hidden; /* 🔒 Bloquea el scroll horizontal */
   background-color: #fff;
   color: #111;
-  scroll-behavior: smooth; /* Suaviza el desplazamiento al hacer scroll */
+  scroll-behavior: smooth !important; /* Suaviza el desplazamiento al hacer scroll */
 }
 
 /* ========================= */

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./SeccionContacto.css";
 
 const SeccionContacto = () => {
-  const phoneNumber = '5493415919379';
+  const phoneNumber = '+5493412587830';
   const message = 'Hola! Quisiera más información';
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -23,7 +23,7 @@ const SeccionContacto = () => {
     e.preventDefault();
     const subject = `Mensaje de ${formData.nombre}`;
     const body = `Nombre: ${formData.nombre}\nCorreo: ${formData.correo}\n\nMensaje:\n${formData.mensaje}`;
-    window.location.href = `mailto:hernancarballo@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:admin@suntech.com.ar?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -76,11 +76,11 @@ const SeccionContacto = () => {
           <div className="d-flex flex-column gap-2 ">
             <div className="d-flex align-items-center gap-2">
               <i className="bi bi-telephone-fill"></i>
-              <span>+54 9 3413284542 / +54 9 3415919379</span>
+              <span>+54 9 3412587830</span>
             </div>
             <div className="d-flex align-items-center gap-2">
               <i className="bi bi-envelope-fill"></i>
-              <span>consultas@suntech.com</span>
+              <span>admin@suntech.com.ar</span>
             </div>
           </div>
         </div>

@@ -1,14 +1,20 @@
 import "./SeccionOne.css"
-import logo from "/src/assets/logo_SunTech.png";
+import logo from "/src/assets/Logos/logo_SunTech.png";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 const SeccionOne = () => {
     const frase = "<<Soluciones solares, futuro sostenible>>"
+    useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: true
+        });
+      }, []);
     return (
         <div className="seccionone" id="inicio">
-            <div className="tituloinicial">                    
-                <img className='logo' src={logo} alt="logo" srcset="" />
-                <h2 className="frase">{frase}</h2>                
-            </div>          
+           
         </div>
     )
 }
