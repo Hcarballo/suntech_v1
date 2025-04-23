@@ -1,11 +1,11 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import "./SeccionMarcas.css";
-import suntech_logo from '/src/assets/Logos/logo_SunTech_2.png';
-import marca_logo from '/src/assets/Logos/amerisolar_logo.png';
-import producto1 from '/src/assets/Marcas/paneles.png';
-import producto2 from '/src/assets/Marcas/paneles.png';
-import producto3 from '/src/assets/Marcas/paneles.png';
+import suntech_logo from '../../assets/Logos/logo_SunTech_2.png';
+import marca_logo from '../../assets/Logos/amerisolar_logo.png';
+import producto1 from '../../assets/Marcas/paneles.png';
+import producto2 from '../../assets/Marcas/paneles.png';
+import producto3 from '../../assets/Marcas/paneles.png';
 
 const Amerisolar = () => {
     const navigate = useNavigate();

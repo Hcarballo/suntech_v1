@@ -1,8 +1,8 @@
 import './SeccionTrabajos.css';
-import work_1 from '/src/assets/Trabajos/collage_cam_1.png';
-import work_2 from '/src/assets/Trabajos/collage_funes_1.png';
-import work_3 from '/src/assets/Trabajos/collage_roldan_1.png';
-import work_4 from '/src/assets/Trabajos/dm_camaras.jpg';
+import work_1 from '../../assets/Trabajos/collage_cam_1.png';
+import work_2 from '../../assets/Trabajos/collage_funes_1.png';
+import work_3 from '../../assets/Trabajos/collage_roldan_1.png';
+import work_4 from '../../assets/Trabajos/dm_camaras.jpg';
 import { useRef } from 'react';
 
 const SeccionTrabajos = () => {

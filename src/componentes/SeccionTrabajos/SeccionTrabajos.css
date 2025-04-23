@@ -35,8 +35,8 @@
 }
 
 .collage-img {
-  width: 300px;
-  height: auto;
+  width: 400px;
+  height: 350px;
   border-radius: 10px;
   flex-shrink: 0;
 }

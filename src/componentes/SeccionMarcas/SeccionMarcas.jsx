@@ -1,8 +1,8 @@
 import "./SeccionMarcas.css";
-import deye from "/src/assets/Logos/deye.png";
-import growatt from "/src/assets/Logos/growatt.png";
-import ezviz from "/src/assets/Logos/ezviz.png";
-import amarisolar from "/src/assets/Logos/amerisolar_logo.png";
+import deye from "../../assets/Logos/deye.png";
+import growatt from "../../assets/Logos/growatt.png";
+import ezviz from "../../assets/Logos/ezviz.png";
+import amarisolar from "../../assets/Logos/amerisolar_logo.png";
 
 const SeccionMarcas = () => {
 

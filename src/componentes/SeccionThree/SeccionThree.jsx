@@ -1,9 +1,9 @@
 import "./SeccionThree.css";
-import vela from "/src/assets/Icons/i_vela.png" ;
-import ahorrolargo from "/src/assets/Icons/i_ahorro_largo.png";
-import ahorro from "/src/assets/Icons/i_ahorro.png";
-import recupero from "/src/assets/Icons/i_recupero.png";
-import cuidadoequipos from "/src/assets/Icons/i_cuidado_equipos.png";
+import vela from "../../assets/Icons/i_vela.png" ;
+import ahorrolargo from "../../assets/Icons/i_ahorro_largo.png";
+import ahorro from "../../assets/Icons/i_ahorro.png";
+import recupero from "../../assets/Icons/i_recupero.png";
+import cuidadoequipos from "../../assets/Icons/i_cuidado_equipos.png";
 
 const SeccionThree = () => {
     return (
