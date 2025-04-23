@@ -46,11 +46,10 @@
   background-color: rgba(0,0,0,0.4);
   color: white;
   border: none;
-  font-size: 30px;
-  padding: 10px;
+  padding-bottom: 30px;
+  font-size: 70px; 
   cursor: pointer;
   z-index: 10;
-  border-radius: 50%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -70,5 +69,5 @@
 
 .galeria{
   padding-left: 20px;
-  color: blue;
+  color: rgb(117, 117, 245);
 }
