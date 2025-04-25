@@ -1,5 +1,5 @@
 import "./SeccionMarcas.css";
-import suntech_logo from '../../assets/Logos/logo_SunTech_2.png';
+import suntech_logo from '../../assets/Logos/logo_suntech_2.png';
 import { useNavigate } from 'react-router-dom';
 
 const Deye = () => {

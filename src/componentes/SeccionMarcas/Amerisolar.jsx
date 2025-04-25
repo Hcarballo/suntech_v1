@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import "./SeccionMarcas.css";
-import suntech_logo from '../../assets/Logos/logo_SunTech_2.png';
+import suntech_logo from '../../assets/Logos/logo_suntech_2.png';
 import marca_logo from '../../assets/Logos/amerisolar_logo.png';
 import producto1 from '../../assets/Marcas/paneles.png';
 import producto2 from '../../assets/Marcas/paneles.png';
