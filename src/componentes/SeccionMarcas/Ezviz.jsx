@@ -3,7 +3,7 @@ import './SeccionMarcas.css';
 import suntech_logo from '../../assets/Logos/logo_suntech_2.png';
 import ezviz_logo from '../../assets/Logos/ezviz.png';
 import producto1 from '../../assets/Marcas/ezviz_EB3.png';
-import producto2 from '../../assets/Marcas/ezviz_BC1c_4k.png';
+import producto2 from '../../assets/Marcas/ezviz_BC1c_4K.png';
 import producto3 from '../../assets/Marcas/ezviz_BC2.png';
 import producto4 from '../../assets/Marcas/ezviz_EB5.png';
 
