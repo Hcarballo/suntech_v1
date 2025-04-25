@@ -1,5 +1,5 @@
 import '../../App.css';
-import suntech_logo from "../../assets/Logos/logo_SunTech_2.png";
+import suntech_logo from "../../assets/Logos/logo_suntech_2.png";
 import paso1 from "../../assets/Info/Termo/paso_1_tanques.png";
 import paso2 from "../../assets/Info/Termo/paso_2_tanques.png";
 import paso3 from "../../assets/Info/Termo/paso_3_tanques.png";

@@ -1,5 +1,5 @@
 import './SeccionCamara.css';
-import suntech_logo from "../../assets/Logos/logo_SunTech_2.png";
+import suntech_logo from "../../assets/Logos/logo_suntech_2.png";
 import paso1 from  "../../assets/Info/Camaras/paso_1_camaras.png"; // Reemplazalos por imágenes específicas si querés
 import paso2 from "../../assets/Info/Camaras/paso_2_camaras.png";
 import paso3 from "../../assets/Info/Camaras/paso_3_camaras.png";

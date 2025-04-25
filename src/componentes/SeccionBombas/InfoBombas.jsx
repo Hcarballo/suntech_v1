@@ -1,5 +1,5 @@
 import './SeccionBombas.css';
-import suntech_logo from "../../assets/Logos/logo_SunTech_2.png";
+import suntech_logo from "../../assets/Logos/logo_suntech_2.png";
 import paso1_bomba from "../../assets/Info/Bombas/paso_1_bombas.png";
 import paso2_bomba from "../../assets/Info/Bombas/paso_2_bombas.png";
 import paso3_bomba from "../../assets/Info/Bombas/paso_3_bombas.png";

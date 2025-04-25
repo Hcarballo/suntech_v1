@@ -1,5 +1,5 @@
 import './SeccionPaneles.css';
-import suntech_logo from "../../assets/Logos/logo_SunTech_2.png";
+import suntech_logo from "../../assets/Logos/logo_suntech_2.png";
 import paso1 from "../../assets/Info/Paneles/paso_1_paneles.png";
 import paso2 from "../../assets/Info/Paneles/paso_2_paneles.png";
 import paso3 from "../../assets/Info/Paneles/paso_3_paneles.png";
