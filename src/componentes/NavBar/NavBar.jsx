@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import "./NavBar.css";
-import logo from "../../assets/Logos/logo_SunTech_2.png";
+import logo from "../../assets/Logos/logo_suntech_2.png";
 import CardWidget from "../CardWidget/CardWidget";
 
 
@@ -24,7 +24,7 @@ const Navbar = () => {
     <div className="encabezado">
       <div className="seccionlogo">
         <div className="logo">
-          <img className='logo' src={logo} alt="logo" srcset="" />
+          <img className='logo' src={logo} alt="logo"/>
         </div>
         <div className="seccioninfo">
           <div className="d-flex flex-column gap-2 text-black">
