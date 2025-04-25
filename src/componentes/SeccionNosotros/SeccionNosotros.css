@@ -1,40 +1,52 @@
 /* ============================== */
-/* SECCIÓN NOSOTROS (DESKTOP)    */
+/*         VARIABLES GLOBALES     */
+/* ============================== */
+:root {
+  --color-fondo-card: #fff;
+  --color-borde-card: #ddd;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  --color-texto-principal: #333;
+  --color-texto-secundario: #666;
+  --color-staff: #444;
+}
+
+/* ============================== */
+/*     SECCIÓN NOSOTROS (DESKTOP) */
 /* ============================== */
 .seccionnosotros {
-  margin: 0px 0 20px 0;
+  margin: 0 0 20px 0;
   scroll-margin-top: 10rem;
 }
 
-/* Contenedor principal con dos columnas */
-.box-staff-tittle{
+.box-staff-tittle {
   display: flex;
   justify-content: center;
-  margin: 20px 0 20px 0;
+  margin: 20px 0;
 }
 
+/* Contenedor general */
 .contenedor-flex {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 40px;
   flex-wrap: wrap;
+  gap: 40px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Columna izquierda: tarjetas y texto */
+/* Columna izquierda */
 .columna-izquierda {
   flex: 2;
-  border-right: 2px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-right: 2px solid black;
 }
 
-/* Columna derecha: staff */
+/* Columna derecha */
 .columna-derecha {
   flex: 1;
   margin-left: 20px;
@@ -44,26 +56,25 @@
 
 .staff-list {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin: 0;
 }
 
 .staff-list li {
   margin-bottom: 8px;
   font-size: 16px;
-  color: #444;
+  color: var(--color-staff);
 }
 
-/* Contenedor de tarjetas */
+/* Tarjetas */
 .tarjetas {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
-/* Contenedor de texto general */
+/* Texto general */
 .texto {
   padding: 10px;
   max-width: 800px;
@@ -72,18 +83,18 @@
 }
 
 .texto p {
-font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 /* Tarjeta individual */
 .seccionnosotros-card {
   width: 230px;
   margin: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-borde-card);
   border-radius: 8px;
+  background-color: var(--color-fondo-card);
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  box-shadow: 0 4px 8px var(--color-shadow);
   transition: transform 0.3s ease;
 }
 
@@ -91,43 +102,39 @@ font-size: 1.2rem;
   transform: translateY(-5px);
 }
 
-/* Contenedor de imagen */
+/* Imagen en tarjeta */
 .seccionnosotros-card-img-container {
   width: 100%;
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0;
 }
 
-/* Imagen circular */
 .seccionnosotros-card-img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #fff;
+  border: 3px solid var(--color-fondo-card);
 }
 
-/* Cuerpo de la tarjeta */
+/* Cuerpo de tarjeta */
 .seccionnosotros-card-body {
   padding: 10px 15px;
   text-align: center;
 }
 
-/* Título (nombre) */
 .seccionnosotros-card-title {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
-  margin: 15px 0 10px 0;
+  color: var(--color-texto-principal);
+  margin: 15px 0 10px;
 }
 
-/* Descripción */
 .seccionnosotros-card-description p {
   font-size: 14px;
-  color: #666;
+  color: var(--color-texto-secundario);
   line-height: 1.4;
   margin: 0;
 }
@@ -136,63 +143,64 @@ font-size: 1.2rem;
   margin: 10px 0 5px;
 }
 
+/* Logos ISO */
 .iso-logos {
   justify-items: left;
 }
 
-.iso-logo{
+.iso-logo {
   width: 4rem;
   border-radius: 10px;
 }
 
 /* ============================== */
-/* RESPONSIVE - MÓVILES (pantallas pequeñas) */
+/*        RESPONSIVE (MOBILE)     */
 /* ============================== */
-@media (max-width: 768px) {
-  /* Contenedor principal */
+@media (max-width: 850px) {
   .contenedor-flex {
     flex-direction: column;
     align-items: center;
   }
 
-  /* Columna izquierda (tarjetas y texto) */
   .columna-izquierda {
-    flex: 1;
     width: 100%;
-    margin-bottom: 30px; /* Separación entre la columna izquierda y la derecha */
+    margin-bottom: 30px;
+    border-right: none;
   }
 
-  /* Columna derecha (staff) */
   .columna-derecha {
-    flex: 1;
     width: 100%;
-    border-left: none;
     border-top: 2px solid black;
-    padding-left: 0;
-    padding-top: 20px;
     margin-top: 20px;
+    padding-top: 20px;
+    padding-left: 0;
     text-align: center;
   }
 
-  /* Título staff */
   .staff-title {
     text-align: center;
   }
 
-  /* Lista de staff */
   .staff-list li {
     text-align: left;
   }
 
-  /* Tarjetas */
   .seccionnosotros-card {
-    width: 70%;
+    width: 40%;
     max-width: 300px;
   }
 
-  /* Texto general */
   .texto {
     text-align: center;
     padding: 10px 20px;
+  }
+}
+
+@media (max-width: 400px){
+  .seccionnosotros-card {
+    width: 50%;
+    margin: 10px;   
+    border-radius: 4px; 
+    max-width: 300px;   
   }
 }

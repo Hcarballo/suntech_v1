@@ -1,26 +1,3 @@
 .secciontanques { 
     background-image: url("../../assets/Background/tanque_agua_solar.png");
   }
-
-  /*__________SECCION INFO____________*/
-
-.img_pasos {
-  width: 25rem;
-  height: 15rem;
-}
-
-.row {
-  justify-content: space-around !important;
-}
-
-.col-md-6 p{
-  text-align: justify;  
-}
-
-.col-md-6{
-  width: 37% !important;
-}
-
-.lead {
-  font-size: 1.5rem !important;
-}

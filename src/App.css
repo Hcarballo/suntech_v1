@@ -13,6 +13,18 @@ section {
 .btninfo {
   width: 8rem;
   margin-left: 12px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btninfo:hover {
+  background-color: #45a049;
 }
 
 /* ===================== */
@@ -24,7 +36,7 @@ section {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2); /* Fondo oscuro semitransparente */
+  background: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -41,6 +53,7 @@ section {
   font-weight: bold;
   margin-bottom: 10px;
   color: white !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .overlayfour p {
@@ -48,10 +61,11 @@ section {
   padding: 0 10px;
   color: white !important;
   height: 10rem;
+  line-height: 1.5;
 }
 
 /* ===================== */
-/*   RESPONSIÓN PARA MÓVILES*/
+/*   RESPONSIVIDAD PARA MÓVILES */
 /* ===================== */
 @media (max-width: 850px) {
   section {
@@ -66,21 +80,49 @@ section {
   }
 
   .overlayfour p {
-    font-size: 0.7rem; /* Reducimos el tamaño del párrafo para móviles */
+    font-size: 1.2rem; /* Reducimos el tamaño del párrafo para móviles */
     padding: 0 5px;
     color: white !important;
   }
 
   .btninfo {
-    width: 4rem;
+    width: 7em;
     margin-left: 12px;
     margin-bottom: 10px;
     font-size: 0.6rem !important;
   }
+
+  .img_pasos {
+    height: 10rem !important;
+    border-radius: 5px;    
+  }
+}
+
+@media (max-width: 400px){
+  section {
+    height: 25vh; /* Reducimos la altura para pantallas más pequeñas */
+    margin-top: 0.5rem;
+  }
+
+  .overlayfour h1 {
+    padding-top: 30px;
+    font-size: 1.5rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
+    color: white !important;
+  }
+
+  .overlayfour p {
+    font-size: 0.8rem; /* Reducimos el tamaño del párrafo para móviles */
+    padding: 0 5px;
+    color: white !important;
+  }
+  .img_pasos {
+    height: 7rem !important;
+    border-radius: 5px;    
+  }
 }
 
 /* ===================== */
-/*  PAGE TO INFO */
+/*  PAGE TO INFO (Información adicional) */
 /* ===================== */
 
 .img_pasos {
@@ -88,22 +130,22 @@ section {
   height: 15rem;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
 }
 
 .row {
   justify-content: space-around !important;
 }
 
-.col-md-6 p{
-  text-align: left;  
+.col-md-6 p {
+  text-align: left;
 }
 
-.col-md-6{
+.col-md-6 {
   width: 37% !important;
 }
 
 .lead {
   font-size: 1.5rem !important;
+  color: #555;
 }
-
-

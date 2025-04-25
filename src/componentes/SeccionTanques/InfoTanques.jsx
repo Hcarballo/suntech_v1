@@ -1,4 +1,4 @@
-import './SeccionTanques.css';
+import '../../App.css';
 import suntech_logo from "../../assets/Logos/logo_SunTech_2.png";
 import paso1 from "../../assets/Info/Termo/paso_1_tanques.png";
 import paso2 from "../../assets/Info/Termo/paso_2_tanques.png";
@@ -39,22 +39,22 @@ const InfoTanques = () => {
         <h2 className="text-center mb-4">¿Cómo instalamos el sistema?</h2>
         <div className="row g-4">
           <div className="col-md-6">
-            <img src={paso1} alt="Paso 1" className="img-fluid rounded shadow" />
+            <img src={paso1} alt="Paso 1" className="img_pasos"/>
             <h5 className="mt-3">Paso 1: Preparación del área</h5>
             <p>Limpiamos y nivelamos la superficie donde se instalará el termotanque solar, asegurando una base estable, firme y orientada al sol.</p>
           </div>
           <div className="col-md-6">
-            <img src={paso2} alt="Paso 2" className="img-fluid rounded shadow" />
+            <img src={paso2} alt="Paso 2" className="img_pasos" />
             <h5 className="mt-3">Paso 2: Instalación del equipo</h5>
             <p>Montamos la estructura, posicionamos el tanque y los tubos colectores solares, garantizando la orientación y ángulo correctos para el mayor rendimiento térmico.</p>
           </div>
           <div className="col-md-6">
-            <img src={paso3} alt="Paso 3" className="img-fluid rounded shadow" />
+            <img src={paso3} alt="Paso 3" className="img_pasos" />
             <h5 className="mt-3">Paso 3: Conexiones hidráulicas y pruebas</h5>
             <p>Conectamos el termotanque a la red de agua fría/caliente y realizamos pruebas de estanqueidad y funcionamiento.</p>
           </div>
           <div className="col-md-6">
-            <img src={paso4} alt="Paso 4" className="img-fluid rounded shadow" />
+            <img src={paso4} alt="Paso 4" className="img_pasos" />
             <h5 className="mt-3">Paso 4: Capacitación y recomendaciones</h5>
             <p>Te enseñamos cómo operar el sistema, cómo limpiarlo, y te damos recomendaciones para un mantenimiento fácil y prolongar su vida útil.</p>
           </div>

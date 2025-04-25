@@ -1,3 +1,6 @@
+/* ================================ */
+/*       SECCIÓN TRABAJOS           */
+/* ================================ */
 .secciontrabajos {
   padding: 20px;
   background-color: #90cca7;
@@ -7,52 +10,71 @@
 .titulotrabajos h2 {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 2rem;
+  color: #222;
 }
 
+/* Carrusel principal */
 .carrusel-con-flechas {
   position: relative;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
+/* Contenedor del scroll horizontal */
 .trabajos-carrusel {
   overflow-x: auto;
   white-space: nowrap;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   scroll-behavior: smooth;
   width: 100%;
+  -ms-overflow-style: none; /* IE */
 }
 
 .trabajos-carrusel::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome/Safari */
 }
 
+/* Contenedor interno de las imágenes */
 .imagenes-scroll {
   display: inline-flex;
   gap: 20px;
   padding: 10px;
 }
 
+/* Imágenes del collage */
 .collage-img {
   width: 400px;
   height: 350px;
   border-radius: 10px;
   flex-shrink: 0;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-/* Flechas */
+.collage-img:hover {
+  transform: scale(1.03);
+}
+
+/* ================================ */
+/*             FLECHAS             */
+/* ================================ */
 .flecha {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   border: none;
-  padding-bottom: 30px;
-  font-size: 70px; 
+  font-size: 70px;
   cursor: pointer;
   z-index: 10;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  padding: 0 20px;
+  transition: background-color 0.3s ease;
+}
+
+.flecha:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .flecha.izquierda {
@@ -63,11 +85,28 @@
   right: 0;
 }
 
-.flecha:hover {
-  background-color: rgba(0,0,0,0.7);
-}
-
-.galeria{
+/* Texto o descripción galería */
+.galeria {
   padding-left: 20px;
   color: rgb(117, 117, 245);
+  font-size: 1rem;
+}
+
+/* ================================ */
+/*         RESPONSIVE VIEW          */
+/* ================================ */
+@media (max-width: 768px) {
+  .collage-img {
+    width: 280px;
+    height: 230px;
+  }
+
+  .flecha {
+    font-size: 50px;
+    padding: 0 10px;
+  }
+
+  .titulotrabajos h2 {
+    font-size: 1.5rem;
+  }
 }

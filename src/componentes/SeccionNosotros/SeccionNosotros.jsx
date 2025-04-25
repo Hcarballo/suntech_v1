@@ -2,6 +2,8 @@ import "./SeccionNosotros.css"
 import iso_9001 from "../../assets/Logos/iso_9001.png";
 import iso_50001 from "../../assets/Logos/iso_50001.png";
 import iso_14001 from "../../assets/Logos/iso_14001.png";
+import Socio_1 from "../../assets/Nosotros/Jonatan.png"
+import Socio_2 from "../../assets/Nosotros/Hernan.png"
 
 const SeccionNosotros = () => {
   return (
@@ -16,7 +18,7 @@ const SeccionNosotros = () => {
             <div className="seccionnosotros-card">
               <div className="seccionnosotros-card-img-container">
                 <img
-                  src="https://th.bing.com/th/id/OIP.BoaeFLouH9s_mSMHKpQnzAHaGV?rs=1&pid=ImgDetMain"
+                  src={Socio_1}
                   alt="Foto del empleado"
                   className="seccionnosotros-card-img"
                 />
@@ -29,7 +31,7 @@ const SeccionNosotros = () => {
             <div className="seccionnosotros-card">
               <div className="seccionnosotros-card-img-container">
                 <img
-                  src="https://d.newsweek.com/en/full/2335139/young-business-owner.jpg"
+                  src={Socio_2}
                   alt="Foto del empleado"
                   className="seccionnosotros-card-img"
                 />

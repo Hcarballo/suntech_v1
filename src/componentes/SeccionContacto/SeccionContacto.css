@@ -1,5 +1,18 @@
 /* ========================= */
-/*   CABECERA FIXED HEADER   */
+/*         VARIABLES         */
+/* ========================= */
+:root {
+  --color-bg-negro: #000;
+  --color-blanco: #fff;
+  --color-verde: #4CAF50;
+  --color-verde-hover: #45a049;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #128C7E;
+  --input-border: #ccc;
+}
+
+/* ========================= */
+/*     CABECERA FIXED HEADER */
 /* ========================= */
 .seccionsixheader {  
   top: 0;
@@ -7,14 +20,15 @@
   right: 0;
   display: flex;
   justify-content: space-around;
-  background-color: #000; /* Fondo negro */
-  color: #fff;
+  background-color: var(--color-bg-negro);
+  color: var(--color-blanco);
   padding: 20px;
   width: 100%;
+  position: relative;
 }
 
 /* ========================= */
-/* SECCIÓN DE COMENTARIOS   */
+/*   SECCIÓN DE COMENTARIOS  */
 /* ========================= */
 .seccionsixheader-left {
   flex: 1;
@@ -26,7 +40,7 @@
 }
 
 /* ========================= */
-/* SECCIÓN DE CONTACTO       */
+/*    SECCIÓN DE CONTACTO    */
 /* ========================= */
 .seccionsixheader-right {
   flex: 1;
@@ -38,15 +52,18 @@
   margin-top: 0;
 }
 
-.seccioninfofinal{
+/* ========================= */
+/*      INFO FINAL TEXTO     */
+/* ========================= */
+.seccioninfofinal {
   margin-top: 10px;
   font-size: 1.3rem;
   text-align: center;
-  color: white;
+  color: var(--color-blanco);
 }
 
 /* ========================= */
-/*   FORMULARIO Y CAMPOS     */
+/*    FORMULARIO Y CAMPOS    */
 /* ========================= */
 .input-field {
   margin-bottom: 10px;
@@ -54,13 +71,13 @@
   width: 100%;
   max-width: 250px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
 }
 
 button {
   padding: 8px 12px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--color-verde);
+  color: var(--color-blanco);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -68,33 +85,33 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: var(--color-verde-hover);
 }
 
 /* ========================= */
-/* ICONO DE WHATSAPP        */
+/*      ICONO DE WHATSAPP    */
 /* ========================= */
 .whatsapp-icon {
-  position: fixed; /* Se mantiene fijo en la pantalla */
-  bottom: 20px; /* Distancia desde el borde inferior */
-  right: 20px; /* Distancia desde el borde derecho */
-  font-size: 50px; /* Tamaño del ícono */
-  background-color: #25D366; /* Fondo verde de WhatsApp */
-  color: white; /* Color del ícono */
-  padding: 20px; /* Asegura el espacio dentro del círculo */
-  border-radius: 50%; /* Forma circular */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
-  transition: transform 0.3s ease; /* Transición suave al hacer scroll */
-  width: 70px;  /* Asegura que el ancho sea fijo */
-  height: 70px; /* Asegura que el alto sea fijo y el ícono sea circular */
-  display: flex; /* Flexbox para centrar el ícono */
-  justify-content: center; /* Centrado horizontal */
-  align-items: center; /* Centrado vertical */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 50px;
+  background-color: var(--color-whatsapp);
+  color: var(--color-blanco);
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease, color 0.3s ease;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .whatsapp-icon:hover {
-  color: #128C7E; /* Cambio de color en hover */
+  color: var(--color-whatsapp-hover);
 }
 
 /* ========================= */
@@ -102,28 +119,34 @@ button:hover {
 /* ========================= */
 @media (max-width: 768px) {
   .seccionsixheader {
-    flex-direction: column; /* Apilamos las secciones en una columna en pantallas pequeñas */
+    flex-direction: column;
     align-items: center;
     padding: 10px;
   }
 
-  .seccionsixheader-left, .seccionsixheader-right {
+  .seccionsixheader-left,
+  .seccionsixheader-right {
     text-align: center;
     padding: 10px 0;
-    flex: unset; /* No permite que los elementos se estiren en pantallas más pequeñas */
+    flex: none;
+    width: 100%;
   }
 
   .input-field {
-    max-width: 100%; /* Hace que los campos de entrada ocupen el 100% de la pantalla en móviles */
+    max-width: 100%;
   }
 
   .whatsapp-icon {
-    font-size: 40px; /* Reducimos el tamaño del ícono en móviles */
+    font-size: 40px;
     bottom: 10px;
     right: 10px;
+    padding: 15px;
+    width: 60px;
+    height: 60px;
   }
 
-  .seccioninfofinal{
-    font-size: 0.7rem;
+  .seccioninfofinal {
+    font-size: 0.9rem;
   }
 }
+
