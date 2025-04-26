@@ -69,7 +69,7 @@ section {
 /* ===================== */
 @media (max-width: 850px) {
   section {
-    height: 27vh; /* Reducimos la altura para pantallas más pequeñas */
+    height: 35vh; /* Reducimos la altura para pantallas más pequeñas */
     margin-top: 0.5rem;
   }
 
@@ -80,7 +80,7 @@ section {
   }
 
   .overlayfour p {
-    font-size: 1.2rem; /* Reducimos el tamaño del párrafo para móviles */
+    font-size: 1rem; /* Reducimos el tamaño del párrafo para móviles */
     padding: 0 5px;
     color: white !important;
   }
@@ -106,12 +106,12 @@ section {
 
   .overlayfour h1 {
     padding-top: 30px;
-    font-size: 1.5rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
+    font-size: 1.1rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
     color: white !important;
   }
 
   .overlayfour p {
-    font-size: 0.8rem; /* Reducimos el tamaño del párrafo para móviles */
+    font-size: 0.6rem; /* Reducimos el tamaño del párrafo para móviles */
     padding: 0 5px;
     color: white !important;
   }
@@ -119,6 +119,7 @@ section {
     height: 7rem !important;
     border-radius: 5px;    
   }
+  
 }
 
 /* ===================== */
@@ -145,7 +146,3 @@ section {
   width: 37% !important;
 }
 
-.lead {
-  font-size: 1.5rem !important;
-  color: #555;
-}

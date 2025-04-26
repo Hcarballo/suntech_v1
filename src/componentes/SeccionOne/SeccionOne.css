@@ -52,16 +52,4 @@
   .seccionone {
     padding: 60px 10px 1px 10px;
   }
-
-  .tituloinicial {
-    margin-top: -20px;
-  }
-
-  .tituloinicial h1 {
-    font-size: 1.5rem;
-  }
-
-  .tituloinicial h2 {
-    font-size: 0.9rem;
-  }
 }
