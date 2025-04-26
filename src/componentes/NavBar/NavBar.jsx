@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import "./NavBar.css";
-import logo from "../../assets/Logos/logo_SunTech_2.png";
+import logo from "../../assets/Logos/logo_suntech_2.png";
 import CardWidget from "../CardWidget/CardWidget";
 
 
