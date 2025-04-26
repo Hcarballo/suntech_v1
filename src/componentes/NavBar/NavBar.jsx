@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./NavBar.css";
 import CardWidget from "../CardWidget/CardWidget";
 
-const logo = "/assets/Logos/logo_suntech.png";
+const logo = "/assets/Logos/logo_SunTech_2.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,7 @@ const Navbar = () => {
     <div className="encabezado">
       <div className="seccionlogo">
         <div className="logo">
-          <img className='logo' src={logo} alt="logo"/>
+          <img className='logo' src={logo} alt="logo" srcset="" />
         </div>
         <div className="seccioninfo">
           <div className="d-flex flex-column gap-2 text-black">
