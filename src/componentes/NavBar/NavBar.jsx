@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./NavBar.css";
 import CardWidget from "../CardWidget/CardWidget";
 
-const logo = "/assets/Logos/logo.png";
+const logo = "/assets/Logos/logo_suntech.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
