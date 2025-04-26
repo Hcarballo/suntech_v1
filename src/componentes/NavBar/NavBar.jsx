@@ -1,9 +1,9 @@
 
 import { useState } from "react";
 import "./NavBar.css";
+import logo from "../../assets/Logos/logo_SunTech_2.png";
 import CardWidget from "../CardWidget/CardWidget";
 
-const logo = "/assets/Logos/logo_SunTech_2.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
