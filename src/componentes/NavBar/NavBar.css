@@ -161,7 +161,7 @@
 /* ======================== */
 
 /* MOBILE FIRST DESIGN */
-@media (min-width: 701px) {
+@media (min-width: 768px) {
   .nav-links {
     display: flex;
     flex-direction: row;
@@ -173,14 +173,10 @@
   }
 }
 
-@media (min-width: 1270px) {
-  .navbar {
-    padding: 14px 52px 0px 40px;
-  }
-}
+
 
 /* MOBILE VIEW */
-@media (max-width: 1201px) {
+@media (max-width: 1220px) {
   .navbar {
     padding: 10px 20px;
   }

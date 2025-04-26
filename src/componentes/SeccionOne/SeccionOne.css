@@ -48,6 +48,12 @@
 /* ============================== */
 /*         RESPONSIVE             */
 /* ============================== */
+@media (max-width: 1224px) {
+  .seccionone {
+    padding: 60px 10px 1px 10px;
+  }
+}
+
 @media (max-width: 750px) {
   .seccionone {
     padding: 60px 10px 1px 10px;
