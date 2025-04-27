@@ -12,9 +12,10 @@ import SeccionNosotros from "./componentes/SeccionNosotros/SeccionNosotros";
 import SeccionMarcas from "./componentes/SeccionMarcas/SeccionMarcas";
 import SeccionTrabajos from "./componentes/SeccionTrabajos/SeccionTrabajos";
 import SeccionContacto from "./componentes/SeccionContacto/SeccionContacto";
+import SeccionPromos from "./componentes/SeccionPromos/SeccionPromos";
 
 const App = () => {
- 
+
   return (
     <div>
       <Navbar />
@@ -25,9 +26,10 @@ const App = () => {
       <SeccionBombas />
       <SeccionMantas />
       <SeccionThree />
-      <SeccionMarcas />
+      <SeccionMarcas />      
       <SeccionTrabajos />
-      <SeccionNosotros />
+      <SeccionPromos />
+      <SeccionNosotros />      
       <SeccionContacto />
     </div>
   )

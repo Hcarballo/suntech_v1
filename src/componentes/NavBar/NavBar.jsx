@@ -46,8 +46,18 @@ const Navbar = () => {
           <li><a href="#tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Termotanques</a></li>
           <li><a href="#bom" onClick={(e) => handleAnchorClick(e, 'bom')}>Bombas de Agua</a></li>
           <li><a href="#mant" onClick={(e) => handleAnchorClick(e, 'mant')}>Climatización de Piscinas</a></li>
+          <li>
+            <a
+              href="#pro"
+              onClick={(e) => handleAnchorClick(e, 'pro')}
+              className="promo-link"
+            >
+              ⭐ Promociones ⭐
+            </a>
+          </li>
           <li><a href="#nos" onClick={(e) => handleAnchorClick(e, 'nos')}>Nosotros</a></li>
           <li><a href="#cont" onClick={(e) => handleAnchorClick(e, 'cont')}>Contacto</a></li>
+
           {/*<li ><a className='navbar__cart' href=""><CardWidget /></a></li> */}
         </ul>
         <div className="hamburger" onClick={toggleSidebar}>
@@ -66,6 +76,15 @@ const Navbar = () => {
           <li><a href="#tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Termotanques</a></li>
           <li><a href="#bom" onClick={(e) => handleAnchorClick(e, 'bom')}>Bombas de Agua</a></li>
           <li><a href="#mant" onClick={(e) => handleAnchorClick(e, 'mant')}>Climatización de Piscinas</a></li>
+          <li>
+            <a
+              href="#pro"
+              onClick={(e) => handleAnchorClick(e, 'pro')}
+              className="promo-link"
+            >
+              ⭐ Promociones ⭐
+            </a>
+          </li>
           <li><a href="#nos" onClick={(e) => handleAnchorClick(e, 'nos')}>Nosotros</a></li>
           <li><a href="#cont" onClick={(e) => handleAnchorClick(e, 'cont')}>Contacto</a></li>
           {/*<li ><a className='navbar__cart' href=""><CardWidget /></a></li> */}

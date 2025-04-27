@@ -176,7 +176,7 @@
 
 
 /* MOBILE VIEW */
-@media (max-width: 1220px) {
+@media (max-width: 1280px) {
   .navbar {
     padding: 10px 20px;
   }
@@ -201,4 +201,27 @@
   .hamburger {
     display: flex;
   }
+}
+
+/*Link Promociones*/
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.promo-link {
+  color: red;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+  display: inline-block;
 }
