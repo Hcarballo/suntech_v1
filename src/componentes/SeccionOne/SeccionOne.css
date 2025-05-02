@@ -1,61 +1,90 @@
-/* ============================== */
-/*        SECCIÓN UNO (Hero)     */
-/* ============================== */
-.seccionone {
-  background: rgb(252, 252, 251);
-  /* Fondo verde oscuro */
-  padding: 140px 10px 1px 10px;
-  margin: 0;
-  max-width: 100%;
-  text-align: center;
-  color: rgb(7, 7, 7);
+.seccionone {   
+  background-image: url("../../assets/Background/maps.jpg");  
+  height: 50vh;
+  margin-top: 5rem;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  scroll-margin-top: 10rem;
 }
 
-.logo_uno {
-  opacity: 0;
-  transform: scale(0.9);
-  animation: aparecer 1s ease-in-out forwards;
-  animation-delay: 0.5s;
-}
-
-@keyframes aparecer {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Overlay del contenido */
-.tituloinicial {
-  padding: 0;
-  color: inherit;
-  /* Usa el color del contenedor */
+/* ===================== */
+/*    Capa superpuesta    */
+/* ===================== */
+.overlayseccionone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin-top: 25px;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  padding: 20px;
 }
 
-.frase {
-  font-size: 1.4rem;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-  color: green;
+/* ===================== */
+/*    TEXTO DE LA CAPA   */
+/* ===================== */
+.overlayseccionone h1 {
+  font-size: 4rem; /* Tamaño grande para h1 */
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: white !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* ============================== */
-/*         RESPONSIVE             */
-/* ============================== */
-@media (max-width: 1224px) {
+.overlayseccionone p {
+  font-size: 2rem;
+  padding: 0 10px;
+  color: white !important;
+  height: 10rem;
+  line-height: 1.5;
+}
+
+/* ===================== */
+/*   RESPONSIVIDAD PARA MÓVILES */
+/* ===================== */
+@media (max-width: 850px) {
   .seccionone {
-    padding: 60px 10px 1px 10px;
+    height: 30vh; /* Reducimos la altura para pantallas más pequeñas */
+    margin-top: 0.5rem;
+  }
+
+  .overlayseccionone h1 {
+    padding-top: 30px;
+    font-size: 2.3rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
+    color: white !important;
+  }
+
+  .overlayseccionone p {
+    font-size: 1.5rem; /* Reducimos el tamaño del párrafo para móviles */
+    padding: 0 5px;
+    color: white !important;
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 400px){
   .seccionone {
-    padding: 60px 10px 1px 10px;
+    height: 25vh; /* Reducimos la altura para pantallas más pequeñas */
+    margin-top: 0.5rem;
   }
+
+  .overlayseccionone h1 {
+    padding-top: 10px;
+    font-size: 1.5rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
+    color: white !important;
+  }
+
+  .overlayseccionone p {
+    font-size: 0.8rem; /* Reducimos el tamaño del párrafo para móviles */
+    padding: 0 5px;
+    color: white !important;
+  } 
 }
+
+  

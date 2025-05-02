@@ -1,0 +1,48 @@
+.estadisticas {
+    background-color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .estadistica {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .estadistica h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .estadistica span, 
+  .estadistica .countup {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2e7d32; /* verde */
+  }
+  
+  /* Responsive para pantallas pequeñas */
+  @media (max-width: 850px){
+    .estadistica h2 {
+        font-size: 1rem;
+        margin-bottom: 0.1rem;
+      }
+  }
+
+  @media (max-width: 600px) {
+    .estadisticas {
+      flex-direction: column;
+      padding: 2rem 1rem;
+    }
+  }
+
+  @media (max-width: 400px){
+    .estadistica h2 {
+        font-size: 0.8rem;
+        margin-bottom: 0.1rem;
+      }
+  }
