@@ -17,7 +17,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  background: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -44,6 +44,7 @@
   color: white !important;
   height: 10rem;
   line-height: 1.5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* ===================== */
@@ -63,14 +64,12 @@
 
   .overlayseccionone h1 {
     padding-top: 30px;
-    font-size: 2.3rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
-    color: white !important;
+    font-size: 2.3rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */   
   }
 
   .overlayseccionone p {
     font-size: 1.5rem; /* Reducimos el tamaño del párrafo para móviles */
     padding: 0 5px;
-    color: white !important;
   }
 }
 
@@ -83,13 +82,11 @@
   .overlayseccionone h1 {
     padding-top: 10px;
     font-size: 1.5rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
-    color: white !important;
   }
 
   .overlayseccionone p {
     font-size: 0.8rem; /* Reducimos el tamaño del párrafo para móviles */
     padding: 0 5px;
-    color: white !important;
   } 
 }
 
