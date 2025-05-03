@@ -49,6 +49,12 @@
 /* ===================== */
 /*   RESPONSIVIDAD PARA MÓVILES */
 /* ===================== */
+@media (max-width: 1300px) {
+  .seccionone {
+   margin-top: 0rem;
+  }
+}
+
 @media (max-width: 850px) {
   .seccionone {
     height: 30vh; /* Reducimos la altura para pantallas más pequeñas */
