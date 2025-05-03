@@ -12,14 +12,12 @@
 html, body {
   height: 100%;
   width: 100%;
-  margin-top: 60px;
+  margin-top: 90px;
   font-family: 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   /* Compatibilidad total para evitar el auto-zoom del texto */
-
-  overflow-x: hidden; /* 🔒 Bloquea el scroll horizontal */
   background-color: #fff;
   color: #111;
   scroll-behavior: smooth; /* Suaviza el desplazamiento al hacer scroll */

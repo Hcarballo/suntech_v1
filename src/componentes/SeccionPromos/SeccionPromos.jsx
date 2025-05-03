@@ -14,7 +14,7 @@ const SeccionPromos = () => {
     return (
         <div className='seccionpromo'>
             <div className="promo-container" id='pro'>
-                <h2 className="promo-title">✨ Promoción Especial Abril 2025 ✨</h2>
+                <h2 className="promo-title">✨ Promoción Especial Mayo 2025 ✨</h2>
 
                 <img
                     src={promo}

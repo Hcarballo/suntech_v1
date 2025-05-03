@@ -5,7 +5,7 @@
   position: relative;
   background-size: cover;
   background-position: center center;
-  scroll-margin-top: 10rem;
+  scroll-margin-top: 10rem !important;
 }
 
 /* ===================== */
@@ -17,7 +17,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
+  background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -35,11 +35,11 @@
   margin-top: 30px;
   margin-bottom: 10px;
   color: white !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .overlayseccionone p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0 10px;
   color: white !important;
   height: 10rem;
