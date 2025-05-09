@@ -15,7 +15,7 @@ const SeccionEstadisticas = () => {
             </div>   
             <div className="estadistica">
                 <h2>PODUCCION ANUAL</h2>
-                <span>+</span><CountUp start={0} end={480000} duration={3} suffix=" kW" />
+                <span>+</span><CountUp start={0} end={480000} duration={3.5} suffix=" kW" />
             </div>         
             <div className="estadistica">
                 <h2>REDUCCION CO₂</h2>

@@ -1,6 +1,6 @@
 import './SeccionMantas.css';
 import suntech_logo from "../../assets/Logos/logo_suntech_2.png";
-import paso1 from "../../assets/Info/Mantas/paso_1_mantas.png";
+import paso1 from "../../assets/Info/Mantas/paso_1_mantas.webp";
 import paso2 from "../../assets/Info/Mantas/paso_2_mantas.png";
 import paso3 from "../../assets/Info/Mantas/paso_3_mantas.png";
 import paso4 from "../../assets/Info/Mantas/paso_4_mantas.png";
