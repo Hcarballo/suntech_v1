@@ -7,12 +7,13 @@
   box-sizing: border-box;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  overflow-x: hidden;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
+  max-width: 100vw;
   margin-top: 90px;
   font-family: 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,7 +22,8 @@ html, body {
   /* Compatibilidad total para evitar el auto-zoom del texto */
   background-color: #fff;
   color: #111;
-  scroll-behavior: smooth; /* Suaviza el desplazamiento al hacer scroll */
+  scroll-behavior: smooth;
+  /* Suaviza el desplazamiento al hacer scroll */
 }
 
 /* ========================= */
@@ -34,7 +36,9 @@ img {
 }
 
 /* Textos y encabezados */
-p, li, span {
+p,
+li,
+span {
   word-break: break-word;
 }
 
@@ -60,7 +64,8 @@ button {
 /* ========================= */
 /*   LISTAS Y UL             */
 /* ========================= */
-ul, ol {
+ul,
+ol {
   list-style: none;
   padding-left: 0;
 }
