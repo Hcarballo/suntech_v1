@@ -8,7 +8,17 @@ const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mess
 const SeccionPromos = () => {
     const [showModal, setShowModal] = useState(false);
 
-    const handleOpenModal = () => setShowModal(true);
+    const handleOpenModal = () => {
+    setShowModal(true);
+
+    if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+            send_to: 'AW-17087639638/gAXbCJmq7cgaENbggtQ_', // ← reemplaza con tu ID real
+            value: 0.0,
+            currency: 'USD'
+        });
+    }
+};
     const handleCloseModal = () => setShowModal(false);
 
     return (
