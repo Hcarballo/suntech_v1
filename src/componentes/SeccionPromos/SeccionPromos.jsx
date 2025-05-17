@@ -9,26 +9,28 @@ const SeccionPromos = () => {
     const [showModal, setShowModal] = useState(false);
 
     const handleOpenModal = () => {
-    setShowModal(true);
+        setShowModal(true);
 
-    if (typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', {
-            send_to: 'AW-17087639638/gAXbCJmq7cgaENbggtQ_', // ← reemplaza con tu ID real
-            value: 0.0,
-            currency: 'USD'
-        });
-    }
-};
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion', {
+                send_to: 'AW-17087639638/gAXbCJmq7cgaENbggtQ_', // ← reemplaza con tu ID real
+                value: 0.0,
+                currency: 'USD'
+            });
+        }
+    };
     const handleCloseModal = () => setShowModal(false);
 
     return (
         <div className='seccionpromo'>
             <div className="promo-container" id='pro'>
-                <h2 className="promo-title">✨ Promoción Especial Mayo 2025 ✨</h2>
+                <h2 className="promo-title">
+                    ✨ Promoción Especial {new Date().toLocaleString('es-ES', { month: 'long', year: 'numeric' }).replace(/^\w/, c => c.toUpperCase())} ✨
+                </h2>
 
                 <img
                     src={promo}
-                    alt="Promoción Abril 2025"
+                    alt="Promociones 2025"
                     className="promo-image"
                 />
 
