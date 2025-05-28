@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './componentes/NavBar/NavBar';
 import SeccionOne from "./componentes/SeccionOne/SeccionOne";
 import SeccionEstadisticas from "./componentes/SeccionEstadisticas/SeccionEstadisticas";
+import SeccionEmpresa from "./componentes/SeccionEmpresa/seccionempresa";
 import SeccionPaneles from "./componentes/SeccionPaneles/SeccionPaneles";
 import SeccionCamara from "./componentes/SeccionCamara/SeccionCamara";
 import SeccionTanques from "./componentes/SeccionTanques/SeccionTanques";
@@ -22,6 +23,7 @@ const App = () => {
       <Navbar />
       <SeccionOne />
       <SeccionEstadisticas />
+      <SeccionEmpresa />
       <SeccionPaneles />
       <SeccionCamara />
       <SeccionTanques />
