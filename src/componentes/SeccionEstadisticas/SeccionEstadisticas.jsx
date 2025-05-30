@@ -4,11 +4,7 @@ import CountUp from 'react-countup';
 
 const SeccionEstadisticas = () => {
     return (
-        <div className="estadisticas">
-            <div className="estadistica">
-                <h2>PROYECTOS CONCRETADOS</h2>
-                <span>+</span><CountUp start={0} end={16} duration={2} />
-            </div>
+        <div className="estadisticas">        
             <div className="estadistica">
                 <h2>POTENCIA INSTALADA</h2>
                 <span>+</span><CountUp start={0} end={320} duration={2.5} suffix=" kW" />
