@@ -15,6 +15,7 @@ import work_13 from '../../assets/Trabajos/20250412_122953.webp';
 import work_14 from '../../assets/Trabajos/Image_1744408737412.jpg';
 import work_15 from '../../assets/Trabajos/Screenshot_20250411_172806_Gallery.jpg';
 import work_16 from '../../assets/Trabajos/Screenshot_20250411_173526_Gallery.jpg';
+import work_17 from '../../assets/Trabajos/don_mateo.jpg';
 
 import { useRef } from 'react';
 
@@ -56,6 +57,7 @@ const SeccionTrabajos = () => {
                         <img className='collage-img' src={work_14} alt="Proyecto 2" />
                         <img className='collage-img' src={work_15} alt="Proyecto 3" />
                         <img className='collage-img' src={work_16} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_17} alt="Proyecto 4" />
                     </div>
                 </div>
 
