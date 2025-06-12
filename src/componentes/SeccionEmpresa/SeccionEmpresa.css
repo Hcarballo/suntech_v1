@@ -100,18 +100,17 @@
 
 @media (max-width: 992px) {
   .bloques-dos-columnas {
-    flex-direction: row;
-    align-items: stretch;
+    flex-direction: column; /* ✅ Ahora se apilan verticalmente */
+    gap: 30px;
   }
 
-  .columna-izquierda {
-    flex: 1;
+  .columna-izquierda_ {
+    flex: unset; /* O simplemente quitás el 'flex: 1' si no es necesario */
   }
 
   .valores {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    flex: unset;
+    display: block; /* ✅ Asegura comportamiento como bloque normal */
   }
 
   .titulo-principal {
