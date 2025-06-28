@@ -1,23 +1,50 @@
-.seccionone {   
-  background-image: url("../../assets/Background/maps.jpg");  
-  height: 50vh;
-  margin-top: 5rem;
+.seccionone {
   position: relative;
-  background-size: cover;
-  background-position: center center;
+  height: 100vh;
+  overflow: hidden;
   scroll-margin-top: 10rem !important;
 }
 
-/* ===================== */
-/*    Capa superpuesta    */
-/* ===================== */
-.overlayseccionone {
+/* Imagen de fondo con animación de zoom */
+.zoom-background {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/Background/panel.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  animation: zoomIn 5s ease-in-out infinite alternate;
+}
+
+/* Capa oscura encima del fondo para mejorar contraste del texto */
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* 🔧 Podés ajustar el 0.4 según lo oscuro que querés */
+  z-index: 2;
+}
+
+/* Animación de zoom */
+@keyframes zoomIn {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+/* Contenedor de texto */
+.overlayseccionone {
+  position: relative;
+  z-index: 3; /* Asegura que esté por encima del fondo y de la capa oscura */
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -26,68 +53,51 @@
   padding: 20px;
 }
 
-/* ===================== */
-/*    TEXTO DE LA CAPA   */
-/* ===================== */
+/* Estilo de texto */
 .overlayseccionone h1 {
-  font-size: 4rem; /* Tamaño grande para h1 */
+  font-size: 4rem;
   font-weight: bold;
   margin-top: 30px;
   margin-bottom: 10px;
-  color: white !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .overlayseccionone p {
   font-size: 1.5rem;
   padding: 0 10px;
-  color: white !important;
-  height: 10rem;
+  color: white;
   line-height: 1.5;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
-/* ===================== */
-/*   RESPONSIVIDAD PARA MÓVILES */
-/* ===================== */
-@media (max-width: 1300px) {
-  .seccionone {
-   margin-top: 0rem;
-  }
-}
-
+/* RESPONSIVE */
 @media (max-width: 850px) {
   .seccionone {
-    height: 30vh; /* Reducimos la altura para pantallas más pequeñas */
-    margin-top: 0.5rem;
+    height: 70vh;
   }
 
   .overlayseccionone h1 {
-    padding-top: 30px;
-    font-size: 2.3rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */   
+    font-size: 2.3rem;
   }
 
   .overlayseccionone p {
-    font-size: 1.5rem; /* Reducimos el tamaño del párrafo para móviles */
+    font-size: 1.5rem;
     padding: 0 5px;
   }
 }
 
-@media (max-width: 400px){
+@media (max-width: 400px) {
   .seccionone {
-    height: 25vh; /* Reducimos la altura para pantallas más pequeñas */
-    margin-top: 0.5rem;
+    height: 60vh;
   }
 
   .overlayseccionone h1 {
-    padding-top: 10px;
-    font-size: 1.5rem; /* Ajustamos el tamaño del texto en pantallas más pequeñas */
+    font-size: 2 rem;
   }
 
   .overlayseccionone p {
-    font-size: 0.8rem; /* Reducimos el tamaño del párrafo para móviles */
-    padding: 0 5px;
-  } 
+    font-size: 1 rem;
+  }
 }
 
-  
