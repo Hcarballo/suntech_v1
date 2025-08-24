@@ -225,3 +225,40 @@
   animation: pulse 1.5s infinite;
   display: inline-block;
 }
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--color-link);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+  color: var(--color-hover);
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+}

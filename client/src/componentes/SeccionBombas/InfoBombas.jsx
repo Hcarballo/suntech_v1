@@ -3,7 +3,7 @@ import suntech_logo from "../../assets/Logos/logo_suntech_2.png";
 import paso1_bomba from "../../assets/Info/Bombas/paso_1_bombas.webp";
 import paso2_bomba from "../../assets/Info/Bombas/paso_2_bombas.png";
 import paso3_bomba from "../../assets/Info/Bombas/paso_3_bombas.png";
-import paso4_bomba from "../../assets/Info/Bombas//paso_4_bombas.webp";
+import paso4_bomba from "../../assets/Info/Bombas/paso_4_bombas.webp";
 import paso5_bomba from "../../assets/Info/Bombas/paso_5_bombas.webp";
 import paso6_bomba from "../../assets/Info/Bombas/paso_6_bombas.webp";
 import { useNavigate } from 'react-router-dom';
