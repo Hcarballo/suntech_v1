@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 import logo from "../../assets/Logos/logo_suntech_2.png";
-// import CardWidget from "../CardWidget/CardWidget"; // comentado si no lo usás
 
 const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,9 +41,9 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
       <nav className="navbar">
         <ul className="nav-links">
           <li>
-            <a href="#inicio" onClick={(e) => handleAnchorClick(e, "maps")}>
+            <Link to="/" className="nav-link" onClick={() => setIsOpen(false)}>
               Inicio
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#pnls" onClick={(e) => handleAnchorClick(e, "pnls")}>
@@ -76,12 +76,16 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
             </a>
           </li>
           <li>
+            <Link to="/products" className="nav-link" onClick={() => setIsOpen(false)}>
+              Productos
+            </Link>
+          </li>
+          <li>
             <a href="#cont" onClick={(e) => handleAnchorClick(e, "cont")}>
               Contacto
             </a>
           </li>
 
-          {/* Aquí agregamos los botones de Login/Register o Logout */}
           {!user ? (
             <>
               <li>
@@ -95,7 +99,8 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                   Login
                 </button>
               </li>
-              <li>
+              {/* Si querés, descomenta Registrarse */}
+              {/* <li>
                 <button
                   className="nav-btn"
                   onClick={() => {
@@ -105,7 +110,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                 >
                   Registrarse
                 </button>
-              </li>
+              </li> */}
             </>
           ) : (
             <li>
@@ -135,42 +140,47 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
         </button>
         <ul>
           <li>
-            <a href="#inicio" onClick={(e) => handleAnchorClick(e, "maps")}>
+            <Link to="/" className="nav-link" onClick={toggleSidebar}>
               Inicio
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#pnls" onClick={(e) => handleAnchorClick(e, "pnls")}>
+            <a href="#pnls" onClick={(e) => { e.preventDefault(); handleAnchorClick(e, "pnls"); toggleSidebar(); }}>
               Fotovoltaica
             </a>
           </li>
           <li>
-            <a href="#cam" onClick={(e) => handleAnchorClick(e, "cam")}>
+            <a href="#cam" onClick={(e) => { e.preventDefault(); handleAnchorClick(e, "cam"); toggleSidebar(); }}>
               Videovigilancia
             </a>
           </li>
           <li>
-            <a href="#tan" onClick={(e) => handleAnchorClick(e, "tan")}>
+            <a href="#tan" onClick={(e) => { e.preventDefault(); handleAnchorClick(e, "tan"); toggleSidebar(); }}>
               Termotanques
             </a>
           </li>
           <li>
-            <a href="#bom" onClick={(e) => handleAnchorClick(e, "bom")}>
+            <a href="#bom" onClick={(e) => { e.preventDefault(); handleAnchorClick(e, "bom"); toggleSidebar(); }}>
               Bombas de Agua
             </a>
           </li>
           <li>
-            <a href="#mant" onClick={(e) => handleAnchorClick(e, "mant")}>
+            <a href="#mant" onClick={(e) => { e.preventDefault(); handleAnchorClick(e, "mant"); toggleSidebar(); }}>
               Climatización de Piscinas
             </a>
           </li>
           <li>
-            <a href="#nos" onClick={(e) => handleAnchorClick(e, "nos")}>
+            <a href="#nos" onClick={(e) => { e.preventDefault(); handleAnchorClick(e, "nos"); toggleSidebar(); }}>
               Nosotros
             </a>
           </li>
           <li>
-            <a href="#cont" onClick={(e) => handleAnchorClick(e, "cont")}>
+            <Link to="/products" className="nav-link" onClick={toggleSidebar}>
+              Productos
+            </Link>
+          </li>
+          <li>
+            <a href="#cont" onClick={(e) => { e.preventDefault(); handleAnchorClick(e, "cont"); toggleSidebar(); }}>
               Contacto
             </a>
           </li>
@@ -182,23 +192,24 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                   className="nav-btn"
                   onClick={() => {
                     onLoginClick();
-                    setIsOpen(false);
+                    toggleSidebar();
                   }}
                 >
                   Login
                 </button>
               </li>
-              <li>
+              {/* Registrarse opcional */}
+              {/* <li>
                 <button
                   className="nav-btn"
                   onClick={() => {
                     onRegisterClick();
-                    setIsOpen(false);
+                    toggleSidebar();
                   }}
                 >
                   Registrarse
                 </button>
-              </li>
+              </li> */}
             </>
           ) : (
             <li>
@@ -206,7 +217,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                 className="nav-btn"
                 onClick={() => {
                   onLogout();
-                  setIsOpen(false);
+                  toggleSidebar();
                 }}
               >
                 Logout
@@ -222,4 +233,3 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
 };
 
 export default Navbar;
-

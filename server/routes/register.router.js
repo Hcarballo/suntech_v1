@@ -1,6 +1,6 @@
 // routes/register.js
 import { Router } from 'express';
-import {user} from '../models/user.models.js'
+import { usermodel } from '../models/user.models';
 
 const router = Router();
 
@@ -14,12 +14,12 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const userExists = await user.findOne({ email });
+    const userExists = await usermodel.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: 'El usuario ya existe' });
     }
 
-    const newUser = new user({ name, email, password });
+    const newUser = new usermodel({ name, email, password });
     await newUser.save();
 
     res.status(201).json({ message: 'Usuario registrado correctamente' });

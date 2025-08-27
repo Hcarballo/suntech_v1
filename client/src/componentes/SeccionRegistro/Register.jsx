@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 
 const Register = ({ onClose }) => {
   const [name, setName] = useState('');
