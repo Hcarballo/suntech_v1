@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
+import { fileURLToPath } from "url"; // 🔹 necesario para ES Modules
 import authRoutes from "./routes/auth.js";
 import { productmodel } from "./models/products.models.js";
 
@@ -38,8 +39,10 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
-// Servir React build
-const __dirname = path.resolve(); // necesario con ES Modules
+// 🔹 Servir React build correctamente en ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get("*", (req, res) => {
