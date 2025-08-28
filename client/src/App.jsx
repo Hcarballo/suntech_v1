@@ -10,7 +10,7 @@ import Navbar from './componentes/NavBar/NavBar';
 // Secciones principales
 import SeccionOne from "./componentes/SeccionOne/SeccionOne";
 import SeccionEstadisticas from "./componentes/SeccionEstadisticas/SeccionEstadisticas";
-import SeccionEmpresa from "./componentes/SeccionEmpresa/seccionempresa";
+import SeccionEmpresa from "./componentes/SeccionEmpresa/SeccionEmpresa";
 import SeccionPaneles from "./componentes/SeccionPaneles/SeccionPaneles";
 import SeccionCamara from "./componentes/SeccionCamara/SeccionCamara";
 import SeccionTanques from "./componentes/SeccionTanques/SeccionTanques";
