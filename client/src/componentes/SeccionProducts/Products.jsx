@@ -1,24 +1,29 @@
 // src/componentes/SeccionProducts/Products.jsx
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './Products.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./Products.css";
 
 const Products = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(true);
 
   // Traer todos los productos al iniciar
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get('/api/products'); // proxy de Vite
-        console.log(res.data); // verificar que llegan los productos
-        setAllProducts(res.data);
-        setFilteredProducts(res.data);
+        const res = await axios.get("/api/products"); // proxy de Vite apunta a tu backend
+        console.log("Respuesta del backend:", res.data);
+
+        const productsArray = Array.isArray(res.data)
+          ? res.data
+          : res.data.products || [];
+
+        setAllProducts(productsArray);
+        setFilteredProducts(productsArray);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       } finally {
         setLoading(false);
       }
@@ -27,31 +32,30 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  // Filtrar productos por item, descripcion o codigo
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchInput(value);
 
-    const filtered = allProducts.filter(p =>
-      (p.item?.toLowerCase().includes(value.toLowerCase()) ||
-       p.descripcion?.toLowerCase().includes(value.toLowerCase()) ||
-       p.codigo?.toLowerCase().includes(value.toLowerCase()))
+    const filtered = allProducts.filter(
+      (p) =>
+        p.codigo?.toLowerCase().includes(value.toLowerCase()) ||
+        p.descripcion?.toLowerCase().includes(value.toLowerCase()) ||
+        p.categoria?.toLowerCase().includes(value.toLowerCase())
     );
 
     setFilteredProducts(filtered);
   };
 
-  // Funciones de botones
   const handleBuy = (product) => {
-    alert(`Has comprado: ${product.item}`);
+    alert(`Has comprado: ${product.codigo}`);
   };
 
   const handleDetail = (product) => {
     alert(
-      `Detalle de producto: ${product.item}\n` +
-      `Descripción: ${product.descripcion}\n` +
-      `Código: ${product.codigo}\n` +
-      `Precio: $${product.precio}`
+      `Detalle de producto: ${product.codigo || "Sin código"}\n` +
+        `Descripción: ${product.descripcion || "Sin descripción"}\n` +
+        `Categoría: ${product.categoria || "Sin categoría"}\n` +
+        `Precio: $${product.precio || 0}`
     );
   };
 
@@ -79,10 +83,10 @@ const Products = () => {
           {filteredProducts.map((product) => (
             <div key={product._id} className="product-card">
               <img
-                src={product.foto || 'https://via.placeholder.com/150'}
-                alt={product.item}
+                src={product.foto || 'via.placeholder.com/150'}
+                alt={product.codigo}
               />
-              <h3>{product.item}</h3>
+              <h3>{product.codigo}</h3>
               <p>Precio: ${product.precio}</p>
               <div className="buttons">
                 <button onClick={() => handleDetail(product)}>Detalle</button>

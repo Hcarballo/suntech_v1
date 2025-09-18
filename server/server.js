@@ -1,55 +1,65 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
 import path from "path";
-import { fileURLToPath } from "url"; // 🔹 necesario para ES Modules
+import routerApp from "./routes/index.js";
 import authRoutes from "./routes/auth.js";
-import { productmodel } from "./models/products.models.js";
-
-dotenv.config();
+import { objectConfig } from "./config/index.js";
+import { fileURLToPath } from "url"; // necesario para ES Modules
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const { port } = objectConfig;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Middleware
-app.use(cors());
 app.use(express.json());
-
-// Conectar a MongoDB
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB conectado"))
-  .catch((err) => console.error("❌ Error conectando MongoDB:", err));
-
-// Rutas API
+app.use(express.urlencoded({ extended: true }));
+app.use(routerApp);
 app.use("/api/auth", authRoutes);
 
-app.get("/api", (req, res) => {
-  res.json({ mensaje: "API funcionando correctamente" });
+// Middleware
+app.use(cors({
+  origin: "http://localhost:5174", // tu frontend
+  credentials: true,
+}));
+
+app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
+
+app.listen(port, () => {
+  console.log(`🚀 Servidor corriendo en http://localhost:${port}`);
+});
+
+/*app.get("/api", (req, res) => {
+  res.json({ mensaje: "API funcionando correctamente" });
+});*/
+
+/*app.get("/api/users", async (res,req) => {
+  try {
+    const users = await usermodel.find();
+    res.json(users);
+  } catch (err) {
+    console.error("Error real:", err);
+    res.status(500).json({ message: "Error al obtener usuarios" });
+  }
+})*/
+
+/*
 
 app.get("/api/products", async (req, res) => {
   try {
-    const products = await productmodel.find();
+    const products = await productModel.find();
+    console.log("pase por server.js")
     res.json(products);
   } catch (err) {
     console.error("Error real:", err);
     res.status(500).json({ message: "Error al obtener productos" });
   }
-});
+});*/
 
-// 🔹 Servir React build correctamente en ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+/*app.post("/api/products", async(req,res)=>{
+  console.log("Server -  agregar")
+})*/
 
-app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
-
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-});

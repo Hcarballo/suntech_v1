@@ -100,7 +100,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                 </button>
               </li>
               {/* Si querés, descomenta Registrarse */}
-              {/* <li>
+              <li>
                 <button
                   className="nav-btn"
                   onClick={() => {
@@ -110,7 +110,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                 >
                   Registrarse
                 </button>
-              </li> */}
+              </li>
             </>
           ) : (
             <li>
@@ -199,7 +199,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                 </button>
               </li>
               {/* Registrarse opcional */}
-              {/* <li>
+              <li>
                 <button
                   className="nav-btn"
                   onClick={() => {
@@ -209,7 +209,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                 >
                   Registrarse
                 </button>
-              </li> */}
+              </li>
             </>
           ) : (
             <li>

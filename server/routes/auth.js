@@ -1,6 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import {usermodel} from '../models/user.models.js'; // 👈 Asegurate de incluir `.js` en rutas locales si usás ES Modules
+import {usermodel} from '../models/user.models.js';
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
     const userExists = await usermodel.findOne({ email });
     if (userExists) return res.status(400).json({ error: 'El usuario ya existe' });
 
-    const newUser = new User({ name, email, password });
+    const newUser = new usermodel({ name, email, password });
     await newUser.save();
     res.status(201).json({ message: 'Usuario registrado con éxito' });
   } catch (err) {

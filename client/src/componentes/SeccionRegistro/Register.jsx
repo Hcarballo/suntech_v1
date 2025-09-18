@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 
 const Register = ({ onClose }) => {
   const [name, setName] = useState('');
@@ -8,27 +9,31 @@ const Register = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },     
-        
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
       });
-console.log("response", response);
-      const data = await response.json();
+
+      // Leer siempre como texto
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = { message: text }; // si no es JSON, lo mostramos tal cual
+      }
 
       if (response.ok) {
-        alert("Usuario registrado correctamente");
-        onClose(); // cerrar modal
+        alert(data.message || "Usuario registrado correctamente");
+        onClose();
       } else {
         alert(data.message || "Error al registrar usuario");
       }
-
     } catch (error) {
       console.error("Error del servidor:", error);
       alert("Ocurrió un error al registrar el usuario.");
+      onClose();
     }
   };
 

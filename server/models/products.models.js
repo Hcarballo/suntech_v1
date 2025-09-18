@@ -1,11 +1,57 @@
-import mongoose from 'mongoose';
+// server/models/products.models.js
+import {Schema, model} from "mongoose";
 
-const schema = new mongoose.Schema({
-  item: { type: String, required: false },
-  codigo: { type: String, required: false },
-  descripcion: { type: String, required: false },
-  foto: { type: String, required: false },
-  precio: { type: Number, required: false }
-}, { timestamps: true });
+const collection = 'products';
 
-export const productmodel = mongoose.model('Product', schema, 'products');
+const productSchema = new Schema({
+  codigo: {
+    type: String,
+    required: false, // obligatorio
+    unique: false,   // no se puede repetir
+    trim: true
+  },
+  descripcion: {
+    type: String,
+    required: false,
+    trim: true
+  },
+  categoria: {
+    type: String,
+    required: false
+  },
+  datoAdicional: {
+    type: String
+  },
+  precioVentaPublicoSinIVA: {
+    type: Number,
+    required: false
+  },
+  precioDistribuidorSinIVA: {
+    type: Number,
+    required: false
+  },
+  iva: {
+    type: Number,
+    default: 0.21 // ejemplo: IVA 21% por defecto
+  },
+  precioPublico: {
+    type: Number,
+    required: false
+  },
+  porcentajeGanancia: {
+    type: Number,
+    default: 0
+  },
+  imagen: {
+    type: String,
+    default: null
+  },
+  dataSheet: {
+    type: String
+  }
+}, {
+  timestamps: true, // agrega createdAt y updatedAt
+});
+
+export const productModel = model(collection, productSchema);
+

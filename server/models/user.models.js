@@ -1,16 +1,14 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const collection = 'Users';
 
-const schema = new mongoose.Schema({
+const schema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, enum: ['admin', 'cliente'], default: 'cliente' },
 }, { timestamps: true });
-
-console.log("pase por la carga del usuario");
 
 // Hash de contraseña antes de guardar
 schema.pre('save', async function (next) {
@@ -24,4 +22,4 @@ schema.methods.comparePassword = function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-export const usermodel = mongoose.model(collection, schema);
+export const usermodel = model(collection, schema);
