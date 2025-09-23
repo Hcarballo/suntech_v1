@@ -7,12 +7,11 @@ export default class ProductsDao {
     };
 
     addProducts = async (product) => {
-        console.log("estoy en el Dao")
+        console.log(`Pase por aca producto ${product.codigo}`)
         return await this.productModel.create(product);
     };
 
     getProducts = async () => {
-        console.log("Estoy mastrando en el dao")
         return await this.productModel.find().lean();
     };
 

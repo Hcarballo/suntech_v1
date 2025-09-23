@@ -1,0 +1,108 @@
+.products-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 🔹 Barra de búsqueda y botón "Agregar" */
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  background: #2d89ef;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #1b5fbf;
+}
+
+/* 🔹 Tabla de productos */
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.products-table th,
+.products-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.products-table th {
+  background: #f5f5f5;
+}
+
+/* 🔹 Botones de acción */
+.products-table button {
+  padding: 6px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Editar */
+.products-table button:first-of-type {
+  background: #ffc107;
+  color: #333;
+}
+
+.products-table button:first-of-type:hover {
+  background: #e0a800;
+}
+
+/* Eliminar */
+.products-table button:last-of-type {
+  background: #dc3545;
+  color: white;
+}
+
+.products-table button:last-of-type:hover {
+  background: #a71d2a;
+}
+
+/* 🔍 Contenedor con lupa e input */
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 8px 8px 8px 32px; /* dejamos espacio para la lupa */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 14px;
+  pointer-events: none; /* no bloquea clics en el input */
+}

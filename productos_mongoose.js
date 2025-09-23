@@ -1,16 +1,3 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import { productModel } from "./server/models/products.models.js";
-import { fileURLToPath } from "url"; // 🔹 necesario para ES Modules
-import path from "path";
-
-
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-dotenv.config();
-
 const products = [
   {
     "codigo": "AS-6P-340W",
@@ -3199,32 +3186,5 @@ const products = [
   }
 ];
 
+export default products;
 
-async function importData() {
-  try {
-    console.log("🔌 Conectando a MongoDB...");
-    console.log("URI:", process.env.MONGO_URI); // debug
-
-    
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-
-    console.log("✅ Conectado a MongoDB");
-
-    // Limpio la colección antes de insertar (opcional)
-    //await productModel.deleteMany({});
-    //console.log("🧹 Colección 'products' vaciada");
-
-    const result = await productModel.insertMany(products);
-    console.log(`📦 ${result.length} productos importados correctamente`);
-  } catch (err) {
-    console.error("❌ Error importando productos:", err);
-  } finally {
-    await mongoose.disconnect();
-    console.log("🔒 Conexión cerrada");
-  }
-}
-
-importData();

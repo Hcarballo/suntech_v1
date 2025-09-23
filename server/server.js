@@ -18,7 +18,7 @@ app.use("/api/auth", authRoutes);
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5174", // tu frontend
+  origin: "http://localhost:5173", // tu frontend
   credentials: true,
 }));
 
@@ -30,36 +30,3 @@ app.use((req, res) => {
 app.listen(port, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${port}`);
 });
-
-/*app.get("/api", (req, res) => {
-  res.json({ mensaje: "API funcionando correctamente" });
-});*/
-
-/*app.get("/api/users", async (res,req) => {
-  try {
-    const users = await usermodel.find();
-    res.json(users);
-  } catch (err) {
-    console.error("Error real:", err);
-    res.status(500).json({ message: "Error al obtener usuarios" });
-  }
-})*/
-
-/*
-
-app.get("/api/products", async (req, res) => {
-  try {
-    const products = await productModel.find();
-    console.log("pase por server.js")
-    res.json(products);
-  } catch (err) {
-    console.error("Error real:", err);
-    res.status(500).json({ message: "Error al obtener productos" });
-  }
-});*/
-
-/*app.post("/api/products", async(req,res)=>{
-  console.log("Server -  agregar")
-})*/
-
-

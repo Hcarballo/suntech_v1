@@ -1,5 +1,6 @@
 .products-container {
   max-width: 900px;
+  padding-top: 300px;
   margin: auto;
   padding: 6rem 0rem 1rem 0rem;
   font-family: Arial, sans-serif;

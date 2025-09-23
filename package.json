@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "convert": "node excel-to-json.js",
-    "import": "node productos_mongoose.js",
+    "import": "node productos_carga.js",
     "start": "node server/server.js",
     "dev": "concurrently \"nodemon server/server.js\" \"cd client && npm run dev\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
@@ -16,6 +16,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.0.4",
+    "react-icons": "^5.5.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

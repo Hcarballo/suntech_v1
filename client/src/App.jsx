@@ -24,6 +24,10 @@ import SeccionContacto from "./componentes/SeccionContacto/SeccionContacto.jsx";
 
 // Rutas adicionales
 import Products from './componentes/SeccionProducts/Products.jsx';
+import ProductList from "./componentes/SeccionProducts/ProductsList.jsx";
+import ProductInsert from "./componentes/SeccionProducts/ProductInsert.jsx";
+import ProductEdit from "./componentes/SeccionProducts/ProductEdit.jsx";
+
 import InfoBombas from './componentes/SeccionBombas/InfoBombas.jsx';
 import InfoCamaras from './componentes/SeccionCamara/InfoCamaras.jsx';
 import InfoMantas from './componentes/SeccionMantas/InfoMantas.jsx';
@@ -66,11 +70,11 @@ const App = () => {
   return (
     <>
       {/* Navbar siempre visible */}
-      <Navbar 
-        user={user} 
-        onLoginClick={handleLoginClick} 
-        onRegisterClick={handleRegisterClick} 
-        onLogout={() => setUser(null)} 
+      <Navbar
+        user={user}
+        onLoginClick={handleLoginClick}
+        onRegisterClick={handleRegisterClick}
+        onLogout={() => setUser(null)}
       />
 
       <Routes>
@@ -95,6 +99,10 @@ const App = () => {
 
         {/* Otras páginas */}
         <Route path="/products" element={<Products />} />
+        <Route path="/productslist" element={<ProductList />} />
+        <Route path="/productinsert" element={<ProductInsert />} />
+        <Route path="/productedit/:id" element={<ProductEdit />} />
+
         <Route path="/infobombas" element={<InfoBombas />} />
         <Route path="/infocamaras" element={<InfoCamaras />} />
         <Route path="/infomantas" element={<InfoMantas />} />
