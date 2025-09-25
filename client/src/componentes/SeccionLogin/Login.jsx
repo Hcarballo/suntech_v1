@@ -3,11 +3,34 @@ import React, { useState } from 'react';
 const Login = ({ onLogin, onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // 👈 Evita recarga de página
-    // Validar datos...
-    onLogin({ name: "Usuario real", email });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || 'Error al iniciar sesión');
+        return;
+      }
+
+      // Guardar token en localStorage (opcional)
+      localStorage.setItem('token', data.token);
+
+      // Avisar al padre
+      onLogin(data.user);
+    } catch (err) {
+      console.error('Error en login:', err);
+      setError('Error de conexión con el servidor');
+    }
   };
 
   return (
@@ -31,6 +54,7 @@ const Login = ({ onLogin, onClose }) => {
           />
           <button type="submit">Iniciar sesión</button>
         </form>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="button" onClick={onClose}>Cerrar</button>
       </div>
     </div>
@@ -38,5 +62,3 @@ const Login = ({ onLogin, onClose }) => {
 };
 
 export default Login;
-
-

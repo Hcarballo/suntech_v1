@@ -1,11 +1,14 @@
 import { Router } from "express";
-import productRouter from './api/products.router.js'
-
-
+import usersRouter from "./users.router.js";
+import productsRouter from "./api/products.router.js";
+import authRoutes from "./auth.js";
 
 const router = Router();
 
-router.use('/api/products', productRouter);
+router.use("/api/auth", authRoutes);
+router.use("/api/users", usersRouter);
+router.use("/api/products", productsRouter);
+
 
 router.use((error, req, res, next) => {
     console.log(error);

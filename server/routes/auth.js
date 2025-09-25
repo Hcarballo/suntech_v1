@@ -1,9 +1,8 @@
 import express from 'express';
-import jwt from 'jsonwebtoken';
-import {usermodel} from '../models/user.models.js';
+import { usermodel } from '../models/user.models.js';
+import { generateToken } from '../utils/jwt.js';
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET;
 
 // Registro
 router.post('/register', async (req, res) => {
@@ -30,7 +29,7 @@ router.post('/login', async (req, res) => {
     const valid = await user.comparePassword(password);
     if (!valid) return res.status(401).json({ error: 'Contraseña incorrecta' });
 
-    const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: '1d' });
+    const token = generateToken(user);
 
     res.json({
       token,
@@ -41,9 +40,11 @@ router.post('/login', async (req, res) => {
         role: user.role
       }
     });
+
   } catch (err) {
     res.status(500).json({ error: 'Error en el servidor' });
   }
+
 });
 
 export default router;
