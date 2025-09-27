@@ -1,6 +1,5 @@
 import { Router } from "express";
 import ProductController from "../../controllers/products.controller.js";
-import { authorizationJWT } from "../../utils/authorizationJWT.js";
 
 
 const router = Router();
@@ -15,10 +14,10 @@ const{
 
 
 router.get('/', getProducts);
-router.get('/:pid',authorizationJWT, getProductsById);
-router.post('/', authorizationJWT, addProducts);
-router.put('/:pid', authorizationJWT, updateProduct);
-router.delete('/:pid', authorizationJWT, deleteProduct);
+router.get('/:pid', getProductsById);
+router.post('/', addProducts);
+router.put('/:pid', updateProduct);
+router.delete('/:pid', deleteProduct);
 
 export default router;
 

@@ -3,10 +3,11 @@ import passport from "passport";
 import cors from "cors";
 import path from "path";
 import routerApp from "./routes/index.js";
-import authRoutes from "./routes/auth.js";
 import { initializePassport } from "./config/passport.config.js";
 import { objectConfig } from "./config/index.js";
 import { fileURLToPath } from "url"; // necesario para ES Modules
+import sessionsRouter from "./routes/session.router.js"
+
 
 const app = express();
 const { port } = objectConfig;
@@ -27,10 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 initializePassport();
 app.use(passport.initialize());
 
-// Rutas de autenticación primero
-app.use("/api/auth", authRoutes);
-
 // Otras rutas de la app
+app.use("/api/sessions", sessionsRouter); // 👈 monta las rutas
 app.use(routerApp);
 
 // Archivos estáticos (build de React)

@@ -1,23 +1,21 @@
-// routes/register.js
-import express from "express";
-import {
+import { Router } from "express";
+import UserController from "../controllers/users.controller.js";
+
+const router = Router();
+
+const {
   getUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser
-} from "../../controllers/users.controller.js";
+} = new UserController();
 
-import { authorizationJWT } from "../../utils/authorizationJWT.js";
-import { authRole } from "../../middlewares/authRole.js";
 
-const router = express.Router();
-
-// ✅ Solo admin puede acceder a estos endpoints
-router.get("/", authorizationJWT, authRole(["admin"]), getUsers);
-router.get("/:id", authorizationJWT, authRole(["admin"]), getUserById);
-router.post("/", authorizationJWT, authRole(["admin"]), createUser);
-router.put("/:id", authorizationJWT, authRole(["admin"]), updateUser);
-router.delete("/:id", authorizationJWT, authRole(["admin"]), deleteUser);
+router.get("/", getUsers);
+router.get("/:id", getUserById);
+router.post("/", createUser);
+router.put("/:id", updateUser);
+router.delete("/:id", deleteUser);
 
 export default router;

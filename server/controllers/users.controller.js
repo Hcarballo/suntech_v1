@@ -1,66 +1,206 @@
-// server/controllers/users.controller.js
-import { usermodel } from "../models/user.models.js";
+import { createHash } from "../utils/bcrypt.js";
+import { userService } from "../service/index.js";
+import { parse } from "date-fns";
+import { sendEmail } from "../utils/sendEmail.js";
 
-// Obtener todos los usuarios (solo admin)
-export const getUsers = async (req, res) => {
-  try {
-    const users = await usermodel.find().select("-password"); // ocultamos password
-    res.json(users);
-  } catch (err) {
-    res.status(500).json({ error: "Error al obtener usuarios" });
-  }
-};
+class UserController {
+    constructor() {
+        this.service = userService;
+    };
 
-// Obtener un usuario por ID
-export const getUserById = async (req, res) => {
-  try {
-    const user = await usermodel.findById(req.params.id).select("-password");
-    if (!user) return res.status(404).json({ error: "Usuario no encontrado" });
-    res.json(user);
-  } catch (err) {
-    res.status(500).json({ error: "Error al obtener usuario" });
-  }
-};
+    getUsers = async (req, res) => {
+        try {
+            const users = await this.service.getUsers();
+            if (users.length == 0) {
+                return res.send('No hay Usuarios Registrados');
+            }
+            return res.send({ status: 'success', payload: users });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-// Crear usuario (solo admin)
-export const createUser = async (req, res) => {
-  try {
-    const { name, email, password, role } = req.body;
-    const exists = await usermodel.findOne({ email });
-    if (exists) return res.status(400).json({ error: "El usuario ya existe" });
+    createUser = async (req, res) => {
+        const {
+            first_name,
+            last_name,
+            date,
+            email,
+            password,
+        } = req.body;
 
-    const newUser = new usermodel({ name, email, password, role });
-    await newUser.save();
-    res.status(201).json(newUser);
-  } catch (err) {
-    res.status(500).json({ error: "Error al crear usuario" });
-  }
-};
+        if (!first_name || !last_name || !date || !email || !password) return res.send('Error');
 
-// Actualizar usuario
-export const updateUser = async (req, res) => {
-  try {
-    const { name, email, role } = req.body;
-    const updatedUser = await usermodel.findByIdAndUpdate(
-      req.params.id,
-      { name, email, role },
-      { new: true }
-    ).select("-password");
+        try {
+            const newUser = {
+                first_name: first_name,
+                last_name: last_name,
+                brithday: date,
+                age: this.edad(date),
+                email: email,
+                last_connection: `Login - ${new Date().toLocaleString()}`,
+                password: createHash(password)
+            }
 
-    if (!updatedUser) return res.status(404).json({ error: "Usuario no encontrado" });
-    res.json(updatedUser);
-  } catch (err) {
-    res.status(500).json({ error: "Error al actualizar usuario" });
-  }
-};
+            const result = await this.service.createUser(newUser);
+            if (result) {
+                return res.send({ status: 'success', message: 'usuario registrado' });
+            }
+            return res.status(401).send({ status: 'error', message: 'No se completo el Registro' });
 
-// Eliminar usuario
-export const deleteUser = async (req, res) => {
-  try {
-    const deletedUser = await usermodel.findByIdAndDelete(req.params.id);
-    if (!deletedUser) return res.status(404).json({ error: "Usuario no encontrado" });
-    res.json({ message: "Usuario eliminado" });
-  } catch (err) {
-    res.status(500).json({ error: "Error al eliminar usuario" });
-  }
-};
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    getUserById = async (req, res) => {
+        const { uId } = req.params;
+        try {
+            const result = await this.service.getUser(uId);
+            if (!result) {
+                return res.send('Usuario no encontrado');
+            }
+            return res.send(result);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    getUserByEmail = async (req, res) => {
+        const { email } = req.params;
+        try {
+            const result = await this.service.getUserEmail(email);
+            if (!result) {
+                return res.send('Usuario no encontrado');
+            }
+            return res.send(result);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    updateUser = async (req, res) => {
+        try {
+            const uid = req.params.uid;
+            const user = await this.service.getUser(uid);
+            const {
+                first_name,
+                last_name,
+                date,
+                foto_perfil,
+                email,
+                checkPremium,
+                role
+            } = req.body;
+
+            if (!first_name || !last_name || !date || !email) return res.send('Datos Incompletos');
+
+            user.first_name = first_name;
+            user.last_name = last_name;
+            user.age = this.edad(date);
+            user.foto_perfil = foto_perfil;
+            user.email = email;
+            user.checkPremium = checkPremium;
+            user.role = role;
+
+            result = await this.service.updateUser(user._id, user);
+            if (!result) return res.send('Usuario No Modificado');
+            return res.send(result);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    userPremium = async (req, res) => {
+        try {
+            const uId = req.params.uid;
+            const user = await this.service.getUser(uId);
+            const userMod = user;
+            if (user.checkPremium === false) {
+                userMod.checkPremium = true;
+            } else {
+                userMod.checkPremium = false;
+            }
+            const result = await this.service.updateUser(user._id, userMod);            
+            if (!result) return res.json({ success: false, message: 'Usuario no encontrado' });
+            return res.json({ success: true, result });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    userDocuments = async (req, res) => {
+
+        if (!req.file) {
+            return res.send('Error al subir el archivo');
+        }
+        const user = await this.service.getUser(req.params.uid);
+        const name = req.file.filename;
+        const reference = req.file.destination;
+        const tipo = req.body.tipo;
+        user.documents.push({ document: { name, reference, tipo } });
+        await this.service.updateUser(user._id, user);
+        this.checkDocument(user._id);
+        return res.send('Archivo ok');
+    }
+
+    checkDocument = async (uid) => {
+        const user = await this.service.getUser(uid);
+
+        const isDNI = user.documents.some(doc => doc.document.tipo === "DNI");
+        const isDomicilio = user.documents.some(doc => doc.document.tipo === "Domicilio");
+        const isCuenta = user.documents.some(doc => doc.document.tipo === "Cuenta");
+
+        if (isDNI && isDomicilio && isCuenta) {
+            user.checkPremium = true;
+            await this.service.updateUser(user._id, user);
+            console.log('El usuario subió los 3 archivos');
+            return;
+        }
+        return;
+    };
+
+    edad = (date_born) => {
+        const hoy = new Date();
+        const fechaNac = new Date(date_born);
+        const milisegundosEnUnAnio = 31536000000;
+        const edadEnMilisegundos = hoy - fechaNac;
+        const edad = Math.floor(edadEnMilisegundos / milisegundosEnUnAnio);
+        return edad;
+    };
+
+    deleteUsers = async (req, res) => {
+        const set = 1; //Setear hora de inactividad
+        const users = await this.service.getUsers();
+        const now = new Date();
+        if (users.length <= 0) {
+            return;
+        }
+        users.forEach(async (user) => {
+            const html = '<h4>Usted fue dado de baja del sistema por inactividad</h4>'
+            const lastConnectionString = user.last_connection.split(" - ")[1];
+            const lastConnection = parse(lastConnectionString, 'dd/MM/yyyy, HH:mm:ss', new Date());
+            const diffHours = (now - lastConnection) / (1000 * 60 * 60);
+
+            if (user.role === 'user' || diffHours < set) {
+                const del = await this.service.deleteUser(user.id);
+                if (del) {
+                    await sendEmail(user.email, "Usuario Eliminado", html);
+                }
+            }
+        });
+    };
+
+    deleteUser = async (req, res) => {
+        const user = req.params.id;
+        try {
+            await this.service.deleteUser(user);
+            return res.redirect('/users');
+        } catch (error) {
+            return res.redirect('/users');
+        }
+    }
+}
+
+export default UserController;
