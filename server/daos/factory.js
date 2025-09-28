@@ -16,7 +16,7 @@ switch (objectConfig.persistence) {
         connectDB();
         const { default: ProductDaoMongo } = await import('./Mongo/productDao.js');
         //const { default: CartDaoMongo } = await import('./MONGO/cartDao.js');
-        const { default: UserDaoMongo } = await import('./MONGO/userDao.js')
+        const { default: UserDaoMongo } = await import('./Mongo/userDao.js')
 
         ProductsDao = ProductDaoMongo;
         //CartsDao = CartDaoMongo;

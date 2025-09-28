@@ -4,8 +4,7 @@ export default class ProductRepository {
     }
 
     getProducts = async () => {
-        const products = await this.productDao.getProducts();
-        console.log("Estoy en el repository");
+        const products = await this.productDao.getProducts();      
         return products; // 🔹 IMPORTANTE
     }
 
