@@ -104,12 +104,12 @@ const ProductList = () => {
                 <td>{product.descripcion}</td>
                 <td>{product.categoria}</td>
                 <td>${product.precioPublico}</td>
-                <td>
+                <td className="botones">
                   <button onClick={() => navigate(`/productedit/${product._id}`)}>
-                    ✏️ Editar
+                    ✏️
                   </button>
                   <button onClick={() => handleDelete(product._id)}>
-                    🗑️ Eliminar
+                    🗑️
                   </button>
                 </td>
               </tr>

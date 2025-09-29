@@ -1,108 +1,173 @@
+/* ================= Contenedor principal ================= */
 .products-container {
   padding: 20px;
-  max-width: 1000px;
+  max-width: 100%;
   margin: auto;
+  overflow-x: auto; /* scroll horizontal solo si es necesario */
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* 🔹 Barra de búsqueda y botón "Agregar" */
+/* ================= Barra de búsqueda ================= */
 .search-bar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.search-bar input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  padding: 6px 10px;
   border-radius: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-input-wrapper input {
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-left: 8px;
+  flex: 1;
+}
+
+.search-icon {
+  color: #666;
 }
 
 .search-bar button {
-  padding: 8px 16px;
-  background: #2d89ef;
-  color: white;
+  padding: 8px 14px;
   border: none;
   border-radius: 6px;
+  background-color: #007bff; /* azul */
+  color: white;
   cursor: pointer;
+  font-size: 14px;
 }
 
-.search-bar button:hover {
-  background: #1b5fbf;
-}
-
-/* 🔹 Tabla de productos */
+/* ================= Tabla de productos ================= */
 .products-table {
-  width: 100%;
+  width: 100%; /* ocupa todo el contenedor */
   border-collapse: collapse;
-  margin-top: 10px;
+  table-layout: fixed; /* columnas proporcionales */
 }
 
 .products-table th,
 .products-table td {
+  border: 1px solid #ddd;
   padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+  white-space: normal; /* permite wrap */
+  word-break: break-word;
 }
 
 .products-table th {
   background: #f5f5f5;
+  font-weight: bold;
+  text-align: center; /* títulos centrados */
 }
 
-/* 🔹 Botones de acción */
-.products-table button {
-  padding: 6px 12px;
-  margin-right: 6px;
+/* Limitar ancho de columnas */
+.products-table td:nth-child(1) { /* código */
+  width: 15%;
+  min-width: 70px;
+}
+
+.products-table td:nth-child(2) { /* descripción */
+  width: 45%;
+  min-width: 120px;
+}
+
+.products-table td:nth-child(3) { /* categoría */
+  width: 20%;
+  min-width: 80px;
+}
+
+.products-table td:nth-child(4) { /* precio */
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+
+.products-table td:nth-child(5) { /* acciones */
+  width: auto;
+  min-width: 80px;
+  text-align: center; /* botones centrados */
+  padding: 5px 2px; /* lo más ajustado posible */
+}
+
+/* ================= Botones ================= */
+.products-table td button {
+  margin: 0 2px;
+  font-size: 14px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  display: inline-block;
+  width: 36px; /* cuadrado */
+  height: 36px; /* cuadrado */
+  line-height: 36px;
+  text-align: center;
+  padding: 0;
 }
 
-/* Editar */
-.products-table button:first-of-type {
-  background: #ffc107;
-  color: #333;
-}
-
-.products-table button:first-of-type:hover {
-  background: #e0a800;
-}
-
-/* Eliminar */
-.products-table button:last-of-type {
-  background: #dc3545;
+/* Botón editar */
+.products-table td button:first-child {
+  background-color: #007bff; /* azul */
   color: white;
 }
 
-.products-table button:last-of-type:hover {
-  background: #a71d2a;
+.products-table td button:first-child:hover {
+  background-color: #0056b3; /* azul más oscuro al hover */
 }
 
-/* 🔍 Contenedor con lupa e input */
-.search-input-wrapper {
-  position: relative;
-  flex: 1;
+/* Botón eliminar */
+.products-table td button:last-child {
+  background-color: #f44336; /* rojo */
+  color: white;
 }
 
-.search-input-wrapper input {
-  width: 100%;
-  padding: 8px 8px 8px 32px; /* dejamos espacio para la lupa */
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.products-table td button:last-child:hover {
+  background-color: #c62828; /* rojo más oscuro al hover */
 }
 
-.search-icon {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  color: #666;
-  font-size: 14px;
-  pointer-events: none; /* no bloquea clics en el input */
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .products-container {
+    padding: 10px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar button {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .products-table {
+    font-size: 13px; /* texto más pequeño en móviles */
+  }
+}
+
+@media (max-width: 400px) {
+  .products-table td:nth-child(2) { /* descripción más pequeña */
+    width: 40%;
+  }
+
+  .products-table td:nth-child(3) { /* categoría más pequeña */
+    width: 15%;
+  }
+
+  .products-table td:nth-child(4) { /* precio más pequeña */
+    width: 10%;
+  }
+
+  .products-table td:nth-child(5) { /* acciones más pequeña */
+    width: 15%;
+  }
 }
