@@ -8,8 +8,11 @@ const Login = ({ onLogin, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+     // const res = await fetch("http://localhost:8080/api/sessions/login", {
+    
+
     try {
-      const res = await fetch("http://localhost:8080/api/sessions/login", {
+      const res = await fetch("https://suntech-v1.onrender.com/api/sessions/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
