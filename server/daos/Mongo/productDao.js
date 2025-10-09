@@ -22,8 +22,8 @@ export default class ProductsDao {
         return await this.productModel.findOne(filter);
     };
 
-    updateProduct = async (updatedProduct) => {
-        return await this.productModel.updateOne(updatedProduct);
+    updateProduct = async (pid, updatedProduct) => {
+        return await this.productModel.updateOne(pid, updatedProduct);
     };
 
     deleteProduct = async (id) => {

@@ -1,5 +1,5 @@
 // server/models/products.models.js
-import {Schema, model} from "mongoose";
+import { Schema, model } from "mongoose";
 
 const collection = 'products';
 
@@ -48,6 +48,12 @@ const productSchema = new Schema({
   },
   dataSheet: {
     type: String
+  },
+  stock: {
+    type: Number,
+  },
+  status: {
+    type: String,
   }
 }, {
   timestamps: true, // agrega createdAt y updatedAt

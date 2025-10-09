@@ -1,3 +1,4 @@
+/* ======== Contenedor principal ======== */
 .products-container {
   max-width: 900px;
   padding-top: 300px;
@@ -6,15 +7,26 @@
   font-family: Arial, sans-serif;
 }
 
+/* ======== Barra de búsqueda ======== */
 .search-bar {
   display: flex;
   margin-bottom: 1rem;
+  justify-content: center;
+  gap: 10px;
 }
 
 .search-bar input {
   flex-grow: 1;
-  padding: 0.5rem;
+  max-width: 400px;
+  padding: 0.5rem 0.75rem;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
 }
 
 .search-bar button {
@@ -25,28 +37,97 @@
   border: none;
 }
 
+/* ======== Lista de productos ======== */
 .products-list {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
+/* ======== Tarjetas de producto ======== */
 .product-card {
   border: 1px solid #ddd;
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 10px;
   text-align: center;
-  background: #f9f9f9;
+  background: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;               /* 🔹 Centramos el contenido */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ======== Imagen centrada ======== */
+.product-image-wrapper {
+  width: 100%;
+  height: 150px;
+  display: flex;               /* 🔹 Centra la imagen dentro del espacio */
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
 .product-card img {
   max-width: 100%;
-  height: 150px;
+  max-height: 100%;
   object-fit: contain;
+  display: block;
 }
 
+/* ======== Texto ======== */
 .product-card h3 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.product-card p {
+  margin: 0.3rem 0;
+}
+
+/* ======== Descripción ======== */
+.product-description {
+  color: #666;
+  font-size: 0.9rem;
+  height: 40px;
+  overflow: hidden;
+}
+
+/* ======== Precio ======== */
+.product-price {
+  font-weight: bold;
+  color: #007bff;
   margin: 0.5rem 0;
+}
+
+/* ======== Stock ======== */
+.product-stock {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.stock-ok {
+  color: #0a7d00; /* verde si hay stock */
+  font-weight: 600;
+}
+
+.stock-low {
+  color: #c62828; /* rojo si no hay stock */
+  font-weight: 600;
+}
+
+/* ======== Botones ======== */
+.product-card .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .product-card .buttons button {
@@ -54,11 +135,77 @@
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   border: none;
-  background-color: #007bff;
+  border-radius: 6px;
   color: white;
-  border-radius: 3px;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
 }
 
-.product-card .buttons button:hover {
+/* Botón Detalle */
+.product-card .buttons button:first-child {
+  background-color: #007bff;
+}
+
+.product-card .buttons button:first-child:hover {
   background-color: #0056b3;
+}
+
+/* Botón Comprar */
+.product-card .buttons button:last-child {
+  background-color: #28a745;
+}
+
+.product-card .buttons button:last-child:hover {
+  background-color: #1c7c31;
+}
+
+/* Botón desactivado */
+.product-card .buttons button:disabled,
+.product-card .buttons button.disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+/* ======== Formulario ======== */
+.product-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.product-form input {
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 600px) {
+  .products-container {
+    padding: 2rem 1rem;
+  }
+
+  .product-card {
+    padding: 0.75rem;
+  }
+
+  .product-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .product-description {
+    font-size: 0.8rem;
+  }
+
+  .product-price,
+  .product-stock {
+    font-size: 0.8rem;
+  }
+
+  .product-card .buttons button {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+  }
 }

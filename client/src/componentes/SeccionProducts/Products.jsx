@@ -1,7 +1,6 @@
-// src/componentes/SeccionProducts/Products.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../SeccionProducts/CSS/Products.css";
+import "../SeccionProducts/css/Products.css";
 
 const Products = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -9,11 +8,10 @@ const Products = () => {
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Traer todos los productos al iniciar
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("/api/products"); // proxy de Vite apunta a tu backend
+        const res = await axios.get("/api/products");
         console.log("Respuesta del backend:", res.data);
 
         const productsArray = Array.isArray(res.data)
@@ -55,7 +53,8 @@ const Products = () => {
       `Detalle de producto: ${product.codigo || "Sin código"}\n` +
         `Descripción: ${product.descripcion || "Sin descripción"}\n` +
         `Categoría: ${product.categoria || "Sin categoría"}\n` +
-        `Precio: $${product.precio || 0}`
+        `Precio: $${product.precioPublico || 0}\n` +
+        `Stock: ${product.stock ?? "N/A"} unidades`
     );
   };
 
@@ -83,14 +82,31 @@ const Products = () => {
           {filteredProducts.map((product) => (
             <div key={product._id} className="product-card">
               <img
-                src={product.foto || 'via.placeholder.com/150'}
+                src={product.imagen || "https://via.placeholder.com/150"}
                 alt={product.codigo}
               />
               <h3>{product.codigo}</h3>
-              <p>Precio: ${product.precio}</p>
+              <p className="product-description">{product.descripcion}</p>
+              <p className="product-price">💲{Number(product.precioPublico).toFixed(2)}</p>
+
+              {/* 🔹 Mostrar stock disponible */}
+              <p
+                className={
+                  product.stock > 0 ? "product-stock stock-ok" : "product-stock stock-low"
+                }
+              >
+                Stock: {product.stock > 0 ? `${product.stock} disponibles` : "Sin stock"}
+              </p>
+
               <div className="buttons">
                 <button onClick={() => handleDetail(product)}>Detalle</button>
-                <button onClick={() => handleBuy(product)}>Comprar</button>
+                <button
+                  onClick={() => handleBuy(product)}
+                  disabled={product.stock <= 0}
+                  className={product.stock <= 0 ? "disabled" : ""}
+                >
+                  Comprar
+                </button>
               </div>
             </div>
           ))}
@@ -101,3 +117,4 @@ const Products = () => {
 };
 
 export default Products;
+

@@ -1,7 +1,7 @@
 // src/componentes/SeccionProducts/insertProduct.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import "../SeccionProducts/CSS/Productinsert.css"
+import "../SeccionProducts/css/Productinsert.css";
 
 const ProductInsert = () => {
   const [formData, setFormData] = useState({
@@ -16,25 +16,28 @@ const ProductInsert = () => {
     porcentajeGanancia: "",
     imagen: "",
     dataSheet: "",
+    stock: "",
+    activo: true, // 🆕 checkbox: por defecto activo
   });
 
   const [mensaje, setMensaje] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Enviar al backend
       const res = await axios.post("/api/products", formData);
       console.log("Producto agregado:", res.data);
       setMensaje("✅ Producto cargado con éxito");
+
+      // Resetear formulario
       setFormData({
         codigo: "",
         descripcion: "",
@@ -47,6 +50,8 @@ const ProductInsert = () => {
         porcentajeGanancia: "",
         imagen: "",
         dataSheet: "",
+        stock: "",
+        activo: true,
       });
     } catch (error) {
       console.error("Error al cargar producto:", error);
@@ -58,6 +63,7 @@ const ProductInsert = () => {
     <div className="product-form-container">
       <h2>Cargar nuevo producto</h2>
       {mensaje && <p>{mensaje}</p>}
+
       <form onSubmit={handleSubmit} className="product-form">
         <input
           type="text"
@@ -108,6 +114,7 @@ const ProductInsert = () => {
           placeholder="IVA"
           value={formData.iva}
           onChange={handleChange}
+          step="0.01"
         />
         <input
           type="number"
@@ -137,6 +144,27 @@ const ProductInsert = () => {
           value={formData.dataSheet}
           onChange={handleChange}
         />
+
+        {/* 🆕 Stock */}
+        <input
+          type="number"
+          name="stock"
+          placeholder="Stock disponible"
+          value={formData.stock}
+          onChange={handleChange}
+          min="0"
+        />
+
+        {/* 🆕 Checkbox de estado */}
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            name="activo"
+            checked={formData.activo}
+            onChange={handleChange}
+          />
+          Activo
+        </label>
 
         <button type="submit">Cargar producto</button>
       </form>

@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";  // 🔹 Importamos la lupa
-import "../SeccionProducts/CSS/ProductList.css";
+import { FaSearch } from "react-icons/fa";
+import "../SeccionProducts/css/ProductList.css";
 
 const ProductList = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -12,7 +12,6 @@ const ProductList = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // 🔹 Traer productos al iniciar
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -23,7 +22,6 @@ const ProductList = () => {
       const productsArray = Array.isArray(res.data)
         ? res.data
         : res.data.products || [];
-
       setAllProducts(productsArray);
       setFilteredProducts(productsArray);
     } catch (error) {
@@ -33,7 +31,6 @@ const ProductList = () => {
     }
   };
 
-  // 🔹 Filtrar por búsqueda
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchInput(value);
@@ -48,13 +45,11 @@ const ProductList = () => {
     setFilteredProducts(filtered);
   };
 
-  // 🔹 Eliminar producto
   const handleDelete = async (id) => {
     if (!window.confirm("¿Seguro que deseas eliminar este producto?")) return;
-
     try {
       await axios.delete(`/api/products/${id}`);
-      fetchProducts(); // refrescar lista
+      fetchProducts();
     } catch (error) {
       console.error("Error al eliminar producto:", error);
       alert("❌ Error al eliminar producto");
@@ -65,7 +60,6 @@ const ProductList = () => {
     <div className="products-container">
       <h1>Listado de Productos</h1>
 
-      {/* 🔹 Barra de búsqueda con lupa */}
       <div className="search-bar">
         <div className="search-input-wrapper">
           <FaSearch className="search-icon" />
@@ -81,7 +75,6 @@ const ProductList = () => {
         </button>
       </div>
 
-      {/* 🔹 Lista de productos */}
       {loading ? (
         <p>Cargando productos...</p>
       ) : filteredProducts.length === 0 ? (
@@ -94,7 +87,9 @@ const ProductList = () => {
               <th>Descripción</th>
               <th>Categoría</th>
               <th>Precio</th>
-              <th>Acciones</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th className="acciones">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -103,12 +98,26 @@ const ProductList = () => {
                 <td>{product.codigo}</td>
                 <td>{product.descripcion}</td>
                 <td>{product.categoria}</td>
-                <td>${product.precioPublico}</td>
+                <td>${Number(product.precioPublico).toFixed(2)}</td>
+                <td>{product.stock ?? "-"}</td>
+                <td
+                  className={
+                    product.status ? "status-activo" : "status-inactivo"
+                  }
+                >
+                  {product.status ? "Activo" : "Inactivo"}
+                </td>
                 <td className="botones">
-                  <button onClick={() => navigate(`/productedit/${product._id}`)}>
+                  <button
+                    className="btn-editar"
+                    onClick={() => navigate(`/productedit/${product._id}`)}
+                  >
                     ✏️
                   </button>
-                  <button onClick={() => handleDelete(product._id)}>
+                  <button
+                    className="btn-eliminar"
+                    onClick={() => handleDelete(product._id)}
+                  >
                     🗑️
                   </button>
                 </td>

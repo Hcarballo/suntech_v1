@@ -1,4 +1,5 @@
 import { productService } from "../service/index.js";
+import { userService } from "../service/index.js";
 
 class ProductController {
     constructor() {
@@ -50,17 +51,17 @@ class ProductController {
         }
     };
 
-getProducts = async (req, res) => {
-    try {
-        const productsDB = await this.service.getProducts();
+    getProducts = async (req, res) => {
+        try {
+            const productsDB = await this.service.getProducts();
 
-        // Siempre responder con JSON (aunque sea un array vacío)
-        res.json(productsDB);
-    } catch (error) {
-        console.error("Error en getProducts:", error);
-        res.status(500).json({ error: "Error al obtener productos" });
-    }
-};
+            // Siempre responder con JSON (aunque sea un array vacío)
+            res.json(productsDB);
+        } catch (error) {
+            console.error("Error en getProducts:", error);
+            res.status(500).json({ error: "Error al obtener productos" });
+        }
+    };
 
     getProductsById = async (req, res) => {
         const { pid } = req.params;
@@ -79,7 +80,7 @@ getProducts = async (req, res) => {
     updateProduct = async (req, res) => {
         const id = req.params.pid;
         const {
-           codigo,
+            codigo,
             descripcion,
             categoria,
             datoAdicional,
@@ -102,19 +103,19 @@ getProducts = async (req, res) => {
         try {
             const product = {
                 codigo,
-            descripcion,
-            categoria,
-            datoAdicional,
-            precioVentaPublicoSinIVA,
-            precioDistribuidorSinIVA,
-            iva,
-            precioPublico,
-            porcentajeGanancia,
-            imagen,
-            dataSheet,
-            stock,
-            status: true,
-            timestamps
+                descripcion,
+                categoria,
+                datoAdicional,
+                precioVentaPublicoSinIVA,
+                precioDistribuidorSinIVA,
+                iva,
+                precioPublico,
+                porcentajeGanancia,
+                imagen,
+                dataSheet,
+                stock,
+                status: true,
+                timestamps
             };
             await this.service.updateProduct({ _id: id }, product);
             res.status(200).send({ status: 'success' });
@@ -132,9 +133,9 @@ getProducts = async (req, res) => {
 
             const owner = await userService.getUser(prodSelect.ownerId);
 
-            if (owner.checkPremium = true) {
-                await sendEmail(owner.email, "Producto Eliminado", html);
-            }
+            /* if (owner.checkPremium = true) {
+                 await sendEmail(owner.email, "Producto Eliminado", html);
+             }*/
             const result = await this.service.deleteProduct(product);
             res.status(200).send({ status: 'success', payload: result });
         } catch (error) {

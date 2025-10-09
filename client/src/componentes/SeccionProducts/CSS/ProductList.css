@@ -1,9 +1,10 @@
 /* ================= Contenedor principal ================= */
 .products-container {
-  padding: 20px;
+  padding: 100px;
   max-width: 100%;
   margin: auto;
   overflow-x: auto; /* scroll horizontal solo si es necesario */
+  font-size: 14px; /* 🔹 letra más chica en general */
 }
 
 /* ================= Barra de búsqueda ================= */
@@ -32,6 +33,7 @@
   background: transparent;
   margin-left: 8px;
   flex: 1;
+  font-size: 13px;
 }
 
 .search-icon {
@@ -45,92 +47,113 @@
   background-color: #007bff; /* azul */
   color: white;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* ================= Tabla de productos ================= */
 .products-table {
-  width: 100%; /* ocupa todo el contenedor */
+  width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* columnas proporcionales */
+  table-layout: fixed;
+  font-size: 13px; /* 🔹 texto más pequeño */
 }
 
 .products-table th,
 .products-table td {
   border: 1px solid #ddd;
-  padding: 10px;
-  white-space: normal; /* permite wrap */
+  padding: 6px 8px; /* 🔹 más compacto */
+  white-space: normal;
   word-break: break-word;
+  text-align: center;
 }
 
 .products-table th {
   background: #f5f5f5;
   font-weight: bold;
-  text-align: center; /* títulos centrados */
+  text-align: center;
 }
 
-/* Limitar ancho de columnas */
+/* ================= Columnas ================= */
 .products-table td:nth-child(1) { /* código */
-  width: 15%;
+  width: 12%;
   min-width: 70px;
 }
 
 .products-table td:nth-child(2) { /* descripción */
-  width: 45%;
+  width: 30%;
   min-width: 120px;
 }
 
 .products-table td:nth-child(3) { /* categoría */
-  width: 20%;
+  width: 15%;
   min-width: 80px;
 }
 
 .products-table td:nth-child(4) { /* precio */
   width: 10%;
   min-width: 60px;
-  text-align: center;
 }
 
-.products-table td:nth-child(5) { /* acciones */
-  width: auto;
-  min-width: 80px;
-  text-align: center; /* botones centrados */
-  padding: 5px 2px; /* lo más ajustado posible */
+.products-table td:nth-child(5) { /* stock */
+  width: 8%;
+  min-width: 50px;
+}
+
+.products-table td:nth-child(6) { /* status */
+  width: 8%;
+  min-width: 60px;
+  font-weight: bold;
+}
+
+.products-table td:nth-child(7) { /* acciones */
+  width: 6%;
+  min-width: 60px;
+  text-align: center;
+  padding: 4px 0; /* 🔹 lo más ajustado posible */
+}
+
+/* ================= Estado (status) ================= */
+.status-activo {
+  color: #0a7d00;
+}
+
+.status-inactivo {
+  color: #c62828;
 }
 
 /* ================= Botones ================= */
 .products-table td button {
-  margin: 0 2px;
-  font-size: 14px;
+  margin: 0 1px;
+  font-size: 13px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   display: inline-block;
-  width: 36px; /* cuadrado */
-  height: 36px; /* cuadrado */
-  line-height: 36px;
+  width: 28px; /* 🔹 más chico */
+  height: 28px;
+  line-height: 28px;
   text-align: center;
   padding: 0;
 }
 
 /* Botón editar */
 .products-table td button:first-child {
-  background-color: #007bff; /* azul */
+  background-color: #007bff;
   color: white;
 }
 
 .products-table td button:first-child:hover {
-  background-color: #0056b3; /* azul más oscuro al hover */
+  background-color: #0056b3;
 }
 
 /* Botón eliminar */
 .products-table td button:last-child {
-  background-color: #f44336; /* rojo */
+  background-color: #f44336;
   color: white;
 }
 
 .products-table td button:last-child:hover {
-  background-color: #c62828; /* rojo más oscuro al hover */
+  background-color: #c62828;
 }
 
 /* ================= Responsive ================= */
@@ -150,24 +173,34 @@
   }
 
   .products-table {
-    font-size: 13px; /* texto más pequeño en móviles */
+    font-size: 12px; /* 🔹 más chico en móviles */
+  }
+
+  .products-table th,
+  .products-table td {
+    padding: 4px 6px;
+  }
+
+  .products-table td button {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 400px) {
-  .products-table td:nth-child(2) { /* descripción más pequeña */
-    width: 40%;
+  .products-table td:nth-child(2) {
+    width: 30%;
   }
 
-  .products-table td:nth-child(3) { /* categoría más pequeña */
-    width: 15%;
+  .products-table td:nth-child(3) {
+    width: 12%;
   }
 
-  .products-table td:nth-child(4) { /* precio más pequeña */
+  .products-table td:nth-child(4),
+  .products-table td:nth-child(5),
+  .products-table td:nth-child(6),
+  .products-table td:nth-child(7) {
     width: 10%;
-  }
-
-  .products-table td:nth-child(5) { /* acciones más pequeña */
-    width: 15%;
   }
 }
