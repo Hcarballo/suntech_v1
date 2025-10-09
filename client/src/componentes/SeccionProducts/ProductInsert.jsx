@@ -1,7 +1,7 @@
 // src/componentes/SeccionProducts/insertProduct.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import "../SeccionProducts/css/Productinsert.css";
+import "./css/Productinsert.css";
 
 const ProductInsert = () => {
   const [formData, setFormData] = useState({
