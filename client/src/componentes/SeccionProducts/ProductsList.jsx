@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import "./css/ProductsList.css";
+import "../SeccionProducts/css/ProductsList.css";
 
 const ProductList = () => {
   const [allProducts, setAllProducts] = useState([]);
