@@ -9,8 +9,8 @@ const Login = ({ onLogin, onClose }) => {
     e.preventDefault(); 
 
     try {
-      const res = await fetch("http://localhost:8080/api/sessions/login", {
-      //const res = await fetch("https://suntech-v1.onrender.com/api/sessions/login", {
+      //const res = await fetch("http://localhost:8080/api/sessions/login", {
+      const res = await fetch("https://suntech-v1.onrender.com/api/sessions/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
