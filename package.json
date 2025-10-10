@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "convert": "node excel-to-json.js",
+    "build": "vite build",
     "import": "node productos_carga.js",
     "start": "node server/server.js",
     "dev": "concurrently \"nodemon server/server.js\" \"cd client && npm run dev\"",
