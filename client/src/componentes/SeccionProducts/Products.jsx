@@ -7,6 +7,9 @@ const Products = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null); // Modal detalle
+  const [cartProduct, setCartProduct] = useState(null); // Modal carrito
+  const [quantity, setQuantity] = useState(1); // cantidad elegida
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -44,18 +47,27 @@ const Products = () => {
     setFilteredProducts(filtered);
   };
 
-  const handleBuy = (product) => {
-    alert(`Has comprado: ${product.codigo}`);
+  const handleDetail = (product) => {
+    setSelectedProduct(product);
   };
 
-  const handleDetail = (product) => {
+  const handleAddToCart = (product) => {
+    setCartProduct(product);
+    setQuantity(1);
+  };
+
+  const handleConfirmAdd = () => {
     alert(
-      `Detalle de producto: ${product.codigo || "Sin código"}\n` +
-        `Descripción: ${product.descripcion || "Sin descripción"}\n` +
-        `Categoría: ${product.categoria || "Sin categoría"}\n` +
-        `Precio: $${product.precioPublico || 0}\n` +
-        `Stock: ${product.stock ?? "N/A"} unidades`
+      `🛒 Agregado al carrito:\n${cartProduct.codigo} × ${quantity} unidad(es)`
     );
+    setCartProduct(null);
+  };
+
+  const handleQuantityChange = (e) => {
+    const value = Number(e.target.value);
+    if (value > 0 && value <= cartProduct.stock) {
+      setQuantity(value);
+    }
   };
 
   return (
@@ -87,29 +99,141 @@ const Products = () => {
               />
               <h3>{product.codigo}</h3>
               <p className="product-description">{product.descripcion}</p>
-              <p className="product-price">💲{Number(product.precioPublico).toFixed(2)}</p>
+              <p className="product-price">
+                💲{Number(product.precioPublico).toFixed(2)}
+              </p>
 
-              {/* 🔹 Mostrar stock disponible */}
+              {/* Stock disponible */}
               <p
                 className={
-                  product.stock > 0 ? "product-stock stock-ok" : "product-stock stock-low"
+                  product.stock > 0
+                    ? "product-stock stock-ok"
+                    : "product-stock stock-low"
                 }
               >
-                Stock: {product.stock > 0 ? `${product.stock} disponibles` : "Sin stock"}
+                Stock:{" "}
+                {product.stock > 0
+                  ? `${product.stock} disponibles`
+                  : "Sin stock"}
               </p>
 
               <div className="buttons">
                 <button onClick={() => handleDetail(product)}>Detalle</button>
+
                 <button
-                  onClick={() => handleBuy(product)}
+                  onClick={() => handleAddToCart(product)}
                   disabled={product.stock <= 0}
                   className={product.stock <= 0 ? "disabled" : ""}
                 >
-                  Comprar
+                  Agregar al carrito
                 </button>
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* 🔹 Modal Detalle Producto */}
+      {selectedProduct && (
+        <div className="modal-overlay" onClick={() => setSelectedProduct(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="modal-close"
+              onClick={() => setSelectedProduct(null)}
+            >
+              ×
+            </button>
+
+            <img
+              src={selectedProduct.imagen || "https://via.placeholder.com/300"}
+              alt={selectedProduct.codigo}
+              className="modal-image"
+            />
+            <h2>{selectedProduct.codigo || "Sin código"}</h2>
+
+            <p>
+              <strong>Descripción:</strong>{" "}
+              {selectedProduct.descripcion || "Sin descripción"}
+            </p>
+            <p>
+              <strong>Categoría:</strong>{" "}
+              {selectedProduct.categoria || "Sin categoría"}
+            </p>
+            <p>
+              <strong>Precio:</strong> $
+              {Number(selectedProduct.precioPublico || 0).toFixed(2)}
+            </p>
+            <p>
+              <strong>Stock:</strong> {selectedProduct.stock ?? "N/A"} unidades
+            </p>
+
+            <p>
+              <strong>Datasheet:</strong>{" "}
+              {selectedProduct.dataSheet &&
+              selectedProduct.dataSheet.trim() !== "" ? (
+                <a
+                  href={selectedProduct.dataSheet}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="datasheet-link"
+                >
+                  Ver datasheet
+                </a>
+              ) : (
+                <span className="no-datasheet">Sin datasheet</span>
+              )}
+            </p>
+
+            <button onClick={() => setSelectedProduct(null)}>Cerrar</button>
+          </div>
+        </div>
+      )}
+
+      {/* 🔹 Modal Agregar al carrito */}
+      {cartProduct && (
+        <div className="modal-overlay" onClick={() => setCartProduct(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="modal-close"
+              onClick={() => setCartProduct(null)}
+            >
+              ×
+            </button>
+
+            <h2>Agregar al carrito</h2>
+            <img
+              src={cartProduct.imagen || "https://via.placeholder.com/300"}
+              alt={cartProduct.codigo}
+              className="modal-image"
+            />
+
+            <p>
+              <strong>{cartProduct.codigo}</strong> —{" "}
+              {cartProduct.descripcion || "Sin descripción"}
+            </p>
+            <p>
+              <strong>Precio:</strong> $
+              {Number(cartProduct.precioPublico || 0).toFixed(2)}
+            </p>
+            <p>
+              <strong>Stock disponible:</strong> {cartProduct.stock}
+            </p>
+
+            {/* Campo cantidad */}
+            <label>
+              Cantidad:
+              <input
+                type="number"
+                min="1"
+                max={cartProduct.stock}
+                value={quantity}
+                onChange={handleQuantityChange}
+                className="quantity-input"
+              />
+            </label>
+
+            <button onClick={handleConfirmAdd}>Confirmar</button>
+          </div>
         </div>
       )}
     </div>
@@ -117,4 +241,3 @@ const Products = () => {
 };
 
 export default Products;
-

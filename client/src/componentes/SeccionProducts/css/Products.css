@@ -181,6 +181,64 @@
   border-radius: 6px;
 }
 
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000; /* 🔹 más alto que el navbar */ 
+}
+
+.modal-content {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content button {
+  margin-top: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+}
+
+/* Efecto fade */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Botón con datasheet */
+.btn-detail.has-datasheet {
+  background-color: #007bff;
+  color: white;
+}
+
+
 /* ======== Responsive ======== */
 @media (max-width: 600px) {
   .products-container {
@@ -208,4 +266,21 @@
     padding: 0.35rem 0.6rem;
     font-size: 0.8rem;
   }
+}
+
+/* Campo cantidad dentro del modal del carrito */
+.quantity-input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: #007bff;
 }
