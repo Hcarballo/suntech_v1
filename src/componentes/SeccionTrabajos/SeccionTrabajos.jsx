@@ -16,6 +16,12 @@ import work_14 from '../../assets/Trabajos/Image_1744408737412.jpg';
 import work_15 from '../../assets/Trabajos/Screenshot_20250411_172806_Gallery.jpg';
 import work_16 from '../../assets/Trabajos/Screenshot_20250411_173526_Gallery.jpg';
 import work_17 from '../../assets/Trabajos/don_mateo.jpg';
+import work_17 from '../../assets/Trabajos/inst_SN1.jpg';
+import work_17 from '../../assets/Trabajos/inst_SN2.jpg';
+import work_17 from '../../assets/Trabajos/inst_SN3.jpg';
+import work_17 from '../../assets/Trabajos/inst_SN4.jpg';
+import work_17 from '../../assets/Trabajos/inst_SN5.jpg';
+import work_17 from '../../assets/Trabajos/inv_deyeSN.jpg';
 
 import { useRef } from 'react';
 

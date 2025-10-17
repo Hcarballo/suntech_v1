@@ -19,7 +19,7 @@ import InfoTanques from './componentes/SeccionTanques/InfoTanques.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HashRouter>
-      <ScrollToTop /> {/* 🔥 Este es el que resuelve tu problema */}
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<App />} />
         <Route path='/infobombas' element={<InfoBombas />} />
