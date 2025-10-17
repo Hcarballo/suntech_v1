@@ -12,7 +12,7 @@ const InfoTanques = () => {
   return (
     <div>
       {/* Navbar con logos */}
-      <div className="sticky-top bg-white py-3 shadow-sm z-3">
+       <div className="fixed-top bg-white py-3 z-3">
         <div className="d-flex justify-content-between align-items-center container">
           <img src={suntech_logo} alt="Suntech Logo" className='marcas_logo' />
         </div>
