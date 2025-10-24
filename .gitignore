@@ -22,5 +22,6 @@ node_modules
 *.sw?
 *.env
 *.ENV.Bk
+*ENV
 dist/
 client/dist/

@@ -284,3 +284,10 @@
   outline: none;
   border-color: #007bff;
 }
+
+/* Mostrar flechas en inputs tipo number */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: inner-spin-button; /* Fuerza que aparezcan */
+  margin: 0;
+}

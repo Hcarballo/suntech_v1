@@ -1,18 +1,24 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import "./NavBar.css";
 import logo from "../../assets/Logos/logo_suntech_2.png";
 
 const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false); // drawer carrito
-  const [cartItems, setCartItems] = useState([]); // productos en carrito
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [showCheckoutForm, setShowCheckoutForm] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleSidebar = () => setIsOpen(!isOpen);
   const toggleCart = () => setCartOpen(!cartOpen);
 
-  // Agregar producto al carrito
+  // =========================
+  // Carrito
+  // =========================
   const addToCart = (product, quantity = 1) => {
     setCartItems((prev) => {
       const existing = prev.find((p) => p._id === product._id);
@@ -21,14 +27,12 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
         return prev.map((p) =>
           p._id === product._id ? { ...p, quantity: newQty } : p
         );
-      } else {
-        return [...prev, { ...product, quantity }];
       }
+      return [...prev, { ...product, quantity }];
     });
     setCartOpen(true);
   };
 
-  // Actualizar cantidad en carrito
   const updateQuantity = (_id, quantity, stock) => {
     if (quantity <= 0 || quantity > stock) return;
     setCartItems((prev) =>
@@ -36,7 +40,18 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
     );
   };
 
-  // Eliminar producto del carrito
+  const increaseQuantity = (id, stock) => {
+    const item = cartItems.find((i) => i._id === id);
+    if (item && item.quantity < stock)
+      updateQuantity(id, item.quantity + 1, stock);
+  };
+
+  const decreaseQuantity = (id) => {
+    const item = cartItems.find((i) => i._id === id);
+    if (item && item.quantity > 1)
+      updateQuantity(id, item.quantity - 1, item.stock);
+  };
+
   const removeFromCart = (_id) => {
     setCartItems((prev) => prev.filter((p) => p._id !== _id));
   };
@@ -46,7 +61,9 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
     0
   );
 
+  // =========================
   // Links según rol
+  // =========================
   const adminLinks = [
     { label: "Inicio", to: "/", type: "link" },
     { label: "Usuarios", to: "/usuarios", type: "link" },
@@ -67,19 +84,47 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
 
   const linksToRender = user?.role === "admin" ? adminLinks : userLinks;
 
-  // Smooth scroll para anchors
+  // =========================
+  // Manejo de navegación con hash
+  // =========================
   const handleAnchorClick = (e, id) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+
+    if (location.pathname !== "/") {
+      // Si no estamos en la home → navegamos a /#id
+      navigate(`/#${id}`);
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }, 200);
+    } else {
+      // Si ya estamos en la home
+      const el = document.getElementById(id);
+      el?.scrollIntoView({ behavior: "smooth" });
+      window.location.hash = id; // Actualiza la URL
+    }
+
     if (isOpen) toggleSidebar();
   };
 
+  // Detectar hash al entrar (ej: /#nos)
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      el?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
+
+  // =========================
+  // Render
+  // =========================
   return (
     <div className="encabezado">
+      {/* Logo y contacto */}
       <div className="seccionlogo">
-        <div className="logo">
-          <img className="logo" src={logo} alt="logo" />
+        <div className="logo" onClick={() => navigate("/")}>
+          <img src={logo} alt="logo" />
         </div>
         <div className="seccioninfo">
           <div className="d-flex flex-column gap-2 text-black">
@@ -95,7 +140,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
         </div>
       </div>
 
-      {/* Menú principal */}
+      {/* Navbar principal */}
       <nav className="navbar">
         <ul className="nav-links">
           {linksToRender.map((link) =>
@@ -120,15 +165,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
 
           {!user ? (
             <li>
-              <button
-                className="nav-btn"
-                onClick={() => {
-                  onLoginClick();
-                  toggleSidebar();
-                }}
-              >
-                Login
-              </button>
+              <button className="nav-btn" onClick={onLoginClick}>Login</button>
             </li>
           ) : (
             <li>
@@ -145,7 +182,6 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
           )}
         </ul>
 
-        {/* Carrito */}
         <div className="cart-icon-container">
           <FaShoppingCart className="cart-icon" onClick={toggleCart} />
           {cartItems.length > 0 && (
@@ -162,7 +198,9 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
 
       {/* Sidebar */}
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
-        <button className="close-btn" onClick={toggleSidebar}>×</button>
+        <button className="close-btn" onClick={toggleSidebar}>
+          ×
+        </button>
         <ul>
           {linksToRender.map((link) =>
             link.type === "link" ? (
@@ -179,14 +217,17 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
               </li>
             )
           )}
-
           {!user ? (
             <li>
-              <button className="nav-btn" onClick={onLoginClick}>Login</button>
+              <button className="nav-btn" onClick={onLoginClick}>
+                Login
+              </button>
             </li>
           ) : (
             <li>
-              <button className="nav-btn" onClick={onLogout}>Logout</button>
+              <button className="nav-btn" onClick={onLogout}>
+                Logout
+              </button>
             </li>
           )}
         </ul>
@@ -198,39 +239,82 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
       {cartOpen && (
         <div className="cart-drawer-overlay" onClick={toggleCart}>
           <div className="cart-drawer" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={toggleCart}>×</button>
+            <button className="modal-close" onClick={toggleCart}>
+              ×
+            </button>
             <h2>Mi Carrito</h2>
 
             {cartItems.length === 0 ? (
               <p>El carrito está vacío</p>
             ) : (
-              <div className="cart-items">
-                {cartItems.map((item) => (
-                  <div key={item._id} className="cart-item">
-                    <div className="cart-item-info">
-                      <strong>{item.codigo}</strong>
-                      <span>${item.precioPublico.toFixed(2)}</span>
+              <>
+                <div className="cart-items">
+                  {cartItems.map((item) => (
+                    <div key={item._id} className="cart-item">
+                      {item.image && (
+                        <img
+                          src={item.image}
+                          alt={item.codigo}
+                          className="cart-item-img"
+                        />
+                      )}
+                      <div className="cart-item-info">
+                        <strong>{item.codigo}</strong>
+                        <span>${item.precioPublico.toFixed(2)}</span>
+                      </div>
+                      <div className="cart-item-controls">
+                        <button onClick={() => decreaseQuantity(item._id)}>-</button>
+                        <span>{item.quantity}</span>
+                        <button
+                          onClick={() => increaseQuantity(item._id, item.stock)}
+                        >
+                          +
+                        </button>
+                        <button onClick={() => removeFromCart(item._id)}>
+                          Eliminar
+                        </button>
+                      </div>
                     </div>
-                    <div className="cart-item-controls">
-                      <input
-                        type="number"
-                        min="1"
-                        max={item.stock}
-                        value={item.quantity}
-                        onChange={(e) =>
-                          updateQuantity(item._id, Number(e.target.value), item.stock)
-                        }
-                      />
-                      <button onClick={() => removeFromCart(item._id)}>Eliminar</button>
-                    </div>
-                  </div>
-                ))}
-                <div className="cart-total">
-                  <strong>Total: ${cartItems.reduce((t,i)=>t+i.precioPublico*i.quantity,0).toFixed(2)}</strong>
+                  ))}
                 </div>
-                <button className="btn-confirm">Finalizar compra</button>
-              </div>
+                <div className="cart-total">
+                  <strong>Total: ${cartTotal.toFixed(2)}</strong>
+                </div>
+                <button
+                  className="btn-confirm"
+                  onClick={() => setShowCheckoutForm(true)}
+                >
+                  Finalizar compra
+                </button>
+              </>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Formulario checkout */}
+      {showCheckoutForm && (
+        <div
+          className="checkout-overlay"
+          onClick={() => setShowCheckoutForm(false)}
+        >
+          <div className="checkout-form" onClick={(e) => e.stopPropagation()}>
+            <h2>Datos para la compra</h2>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("Compra enviada al backend!");
+                setCartItems([]);
+                setShowCheckoutForm(false);
+              }}
+            >
+              <input type="text" name="nombre" placeholder="Nombre" required />
+              <input type="text" name="apellido" placeholder="Apellido" required />
+              <input type="text" name="dni" placeholder="DNI" required />
+              <input type="email" name="correo" placeholder="Correo" required />
+              <input type="tel" name="telefono" placeholder="Teléfono" required />
+              <button type="submit">Enviar pedido</button>
+            </form>
           </div>
         </div>
       )}

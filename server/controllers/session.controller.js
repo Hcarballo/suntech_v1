@@ -174,7 +174,7 @@ class SessionController {
 
       res.clearCookie("token");
       if (req.cookies.tokenCart) res.clearCookie("tokenCart");
-
+console.log("ME FUI")
       return res.json({ status: "success", message: "Logout exitoso" });
     } else {
       return res.status(500).json({ status: "error", message: "No se pudo destruir la sesión" });
