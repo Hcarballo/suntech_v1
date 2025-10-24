@@ -291,3 +291,8 @@
   -webkit-appearance: inner-spin-button; /* Fuerza que aparezcan */
   margin: 0;
 }
+
+.quantity-input {  
+  width: 60px;
+  text-align: center;
+}
