@@ -66,8 +66,9 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
   // =========================
   const adminLinks = [
     { label: "Inicio", to: "/", type: "link" },
-    { label: "Usuarios", to: "/usuarios", type: "link" },
-    { label: "ProductList", to: "/productslist", type: "link" },
+    { label: "Usuarios", to: "/userslist", type: "link" },
+    { label: "Clientes", to: "/clientlist", type: "link" },
+    { label: "Productos", to: "/productslist", type: "link" },
   ];
 
   const userLinks = [
@@ -101,7 +102,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
       // Si ya estamos en la home
       const el = document.getElementById(id);
       el?.scrollIntoView({ behavior: "smooth" });
-      window.location.hash = id; // Actualiza la URL
+      window.location.hash = id;
     }
 
     if (isOpen) toggleSidebar();
@@ -165,7 +166,9 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
 
           {!user ? (
             <li>
-              <button className="nav-btn" onClick={onLoginClick}>Login</button>
+              <button className="nav-btn" onClick={onLoginClick}>
+                Login
+              </button>
             </li>
           ) : (
             <li>
@@ -174,6 +177,7 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
                 onClick={() => {
                   onLogout();
                   toggleSidebar();
+                  navigate("/"); // 🔹 Redirige a la home
                 }}
               >
                 Logout
@@ -225,7 +229,13 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
             </li>
           ) : (
             <li>
-              <button className="nav-btn" onClick={onLogout}>
+              <button
+                className="nav-btn"
+                onClick={() => {
+                  onLogout();
+                  navigate("/"); // 🔹 Redirige a la home también desde el sidebar
+                }}
+              >
                 Logout
               </button>
             </li>
@@ -310,7 +320,6 @@ const Navbar = ({ user, onLoginClick, onRegisterClick, onLogout }) => {
             >
               <input type="text" name="nombre" placeholder="Nombre" required />
               <input type="text" name="apellido" placeholder="Apellido" required />
-              <input type="text" name="dni" placeholder="DNI" required />
               <input type="email" name="correo" placeholder="Correo" required />
               <input type="tel" name="telefono" placeholder="Teléfono" required />
               <button type="submit">Enviar pedido</button>

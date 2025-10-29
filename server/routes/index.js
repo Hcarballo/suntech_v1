@@ -1,11 +1,13 @@
 import { Router } from "express";
-import usersRouter from "./users.router.js";
+import usersRouter from "./api/users.router.js";
 import productsRouter from "./api/products.router.js";
+import clientsRouter from "./api/clients.router.js"
 
 const router = Router();
 
 router.use("/api/users", usersRouter);
 router.use("/api/products", productsRouter);
+router.use("/api/clients", clientsRouter);
 
 
 router.use((error, req, res, next) => {

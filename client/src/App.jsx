@@ -1,11 +1,12 @@
 // src/App.jsx
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import { useState } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
 // Componentes globales
-import Navbar from './componentes/NavBar/NavBar.jsx';
+import Navbar from "./componentes/NavBar/NavBar.jsx";
 
 // Secciones principales
 import SeccionOne from "./componentes/SeccionOne/SeccionOne.jsx";
@@ -23,29 +24,48 @@ import SeccionTrabajos from "./componentes/SeccionTrabajos/SeccionTrabajos.jsx";
 import SeccionContacto from "./componentes/SeccionContacto/SeccionContacto.jsx";
 
 // Rutas adicionales
-import Products from './componentes/SeccionProducts/Products.jsx';
+import Products from "./componentes/SeccionProducts/Products.jsx";
 import ProductList from "./componentes/SeccionProducts/ProductsList.jsx";
 import ProductInsert from "./componentes/SeccionProducts/ProductInsert.jsx";
 import ProductEdit from "./componentes/SeccionProducts/ProductEdit.jsx";
+import UserList from "./componentes/SeccionUsers/UserList.jsx";
+import UserEdit from "./componentes/SeccionUsers/UserEdit.jsx"
+import UserNew from "./componentes/SeccionUsers/UserNew.jsx";
+import ClientList from "./componentes/SeccionClients/clientList.jsx"
 
-import InfoBombas from './componentes/SeccionBombas/InfoBombas.jsx';
-import InfoCamaras from './componentes/SeccionCamara/InfoCamaras.jsx';
-import InfoMantas from './componentes/SeccionMantas/InfoMantas.jsx';
-import InfoPaneles from './componentes/SeccionPaneles/InfoPaneles.jsx';
-import InfoTanques from './componentes/SeccionTanques/InfoTanques.jsx';
-import Deye from './componentes/SeccionMarcas/Deye.jsx';
-import Growatt from './componentes/SeccionMarcas/Growatt.jsx';
-import Ezviz from './componentes/SeccionMarcas/Ezviz.jsx';
-import Amerisolar from './componentes/SeccionMarcas/Amerisolar.jsx';
+import InfoBombas from "./componentes/SeccionBombas/InfoBombas.jsx";
+import InfoCamaras from "./componentes/SeccionCamara/InfoCamaras.jsx";
+import InfoMantas from "./componentes/SeccionMantas/InfoMantas.jsx";
+import InfoPaneles from "./componentes/SeccionPaneles/InfoPaneles.jsx";
+import InfoTanques from "./componentes/SeccionTanques/InfoTanques.jsx";
+import Deye from "./componentes/SeccionMarcas/Deye.jsx";
+import Growatt from "./componentes/SeccionMarcas/Growatt.jsx";
+import Ezviz from "./componentes/SeccionMarcas/Ezviz.jsx";
+import Amerisolar from "./componentes/SeccionMarcas/Amerisolar.jsx";
 
 // Login & Registro
-import Login from './componentes/SeccionLogin/Login.jsx';
-import Register from './componentes/SeccionRegistro/Register.jsx';
+import Login from "./componentes/SeccionLogin/Login.jsx";
+import Register from "./componentes/SeccionRegistro/Register.jsx";
 
+// ===============================
+// 🔒 Componente para rutas privadas
+// ===============================
+const ProtectedRoute = ({ user, children }) => {
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
+  return children;
+};
+
+// ===============================
+// 📱 Componente principal
+// ===============================
 const App = () => {
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleLoginClick = () => {
     setShowLogin(true);
@@ -67,6 +87,11 @@ const App = () => {
     closeModals();
   };
 
+  const handleLogout = () => {
+    setUser(null);
+    navigate("/"); // 🔹 redirige al inicio
+  };
+
   return (
     <>
       {/* Navbar siempre visible */}
@@ -74,35 +99,34 @@ const App = () => {
         user={user}
         onLoginClick={handleLoginClick}
         onRegisterClick={handleRegisterClick}
-        onLogout={() => setUser(null)}
+        onLogout={handleLogout}
       />
 
       <Routes>
         {/* Página principal */}
-        <Route path="/" element={
-          <>
-            <SeccionOne />
-            <SeccionEstadisticas />
-            <SeccionEmpresa />
-            <SeccionPaneles />
-            <SeccionCamara />
-            <SeccionTanques />
-            <SeccionBombas />
-            <SeccionMantas />
-            <SeccionThree />
-            <SeccionMarcas />
-            <SeccionTrabajos />
-            <SeccionNosotros />
-            <SeccionContacto />
-          </>
-        } />
+        <Route
+          path="/"
+          element={
+            <>
+              <SeccionOne />
+              <SeccionEstadisticas />
+              <SeccionEmpresa />
+              <SeccionPaneles />
+              <SeccionCamara />
+              <SeccionTanques />
+              <SeccionBombas />
+              <SeccionMantas />
+              <SeccionThree />
+              <SeccionMarcas />
+              <SeccionTrabajos />
+              <SeccionNosotros />
+              <SeccionContacto />
+            </>
+          }
+        />
 
-        {/* Otras páginas */}
+        {/* Páginas accesibles por todos */}
         <Route path="/products" element={<Products />} />
-        <Route path="/productslist" element={<ProductList />} />
-        <Route path="/productinsert" element={<ProductInsert />} />
-        <Route path="/productedit/:id" element={<ProductEdit />} />
-
         <Route path="/infobombas" element={<InfoBombas />} />
         <Route path="/infocamaras" element={<InfoCamaras />} />
         <Route path="/infomantas" element={<InfoMantas />} />
@@ -112,6 +136,64 @@ const App = () => {
         <Route path="/growatt" element={<Growatt />} />
         <Route path="/ezviz" element={<Ezviz />} />
         <Route path="/amerisolar" element={<Amerisolar />} />
+
+        {/* 🔒 Rutas privadas (solo logueado) */}
+        <Route
+          path="/productslist"
+          element={
+            <ProtectedRoute user={user}>
+              <ProductList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/productinsert"
+          element={
+            <ProtectedRoute user={user}>
+              <ProductInsert />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/productedit/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <ProductEdit />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/userslist"
+          element={
+            <ProtectedRoute user={user}>
+              <UserList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/useredit/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <UserEdit />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/userinsert"
+          element={
+            <ProtectedRoute user={user}>
+              <UserNew />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/clientlist"
+          element={
+            <ProtectedRoute user={user}>
+              <ClientList />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
       {/* Modales Login/Register */}

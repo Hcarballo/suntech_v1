@@ -129,13 +129,8 @@ class ProductController {
 
         try {
             const prodSelect = await this.service.getProductsById(product);
-            const html = `<h4>El producto ${prodSelect} ha sido eliminado</h4>`
-
+            const html = `<h4>El producto ${prodSelect} ha sido eliminado</h4>`;
             const owner = await userService.getUser(prodSelect.ownerId);
-
-            /* if (owner.checkPremium = true) {
-                 await sendEmail(owner.email, "Producto Eliminado", html);
-             }*/
             const result = await this.service.deleteProduct(product);
             res.status(200).send({ status: 'success', payload: result });
         } catch (error) {

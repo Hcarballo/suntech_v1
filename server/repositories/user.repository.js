@@ -1,4 +1,3 @@
-import UserDto from "../dtos/user.dto.js";
 //import { sendEmail } from "../utils/sendEmail.js";
 
 export default class UserRepository {
@@ -12,11 +11,11 @@ export default class UserRepository {
 
     getUserEmail = async email => await this.userDao.getUserByEmail(email);
 
-    createUser = async (user) => {
-        const newUser = new UserDto(user);
+    createUser = async (user) => {       
         const result = await this.userDao.createUser(user);
         return (result);
     }
+   
 
     updateUser = async (user, userToUpdate) => {
         const result = await this.userDao.updateUser(user, userToUpdate);

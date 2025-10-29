@@ -80,9 +80,9 @@ class SessionController {
     const newUser = {
       first_name,
       last_name,
-      brithday: this.convertirFecha(date_born),
-      age: userManager.edad(date_born),
-      foto_perfil: "/image/user/usuario.png",
+      //brithday: this.convertirFecha(date_born),
+      //age: userManager.edad(date_born),
+      //foto_perfil: "/image/user/usuario.png",
       email,
       last_connection: `Login - ${new Date().toLocaleString()}`,
       password: createHash(password),
