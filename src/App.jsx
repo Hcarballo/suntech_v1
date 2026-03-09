@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './componentes/NavBar/NavBar';
 import SeccionOne from "./componentes/SeccionOne/SeccionOne";
 import SeccionEstadisticas from "./componentes/SeccionEstadisticas/SeccionEstadisticas";
-import SeccionEmpresa from "./componentes/SeccionEmpresa/seccionempresa";
+import SeccionEmpresa from "./componentes/SeccionEmpresa/seccionEmpresa";
 import SeccionPaneles from "./componentes/SeccionPaneles/SeccionPaneles";
 import SeccionCamara from "./componentes/SeccionCamara/SeccionCamara";
 import SeccionTanques from "./componentes/SeccionTanques/SeccionTanques";
@@ -14,7 +14,6 @@ import SeccionNosotros from "./componentes/SeccionNosotros/SeccionNosotros";
 import SeccionMarcas from "./componentes/SeccionMarcas/SeccionMarcas";
 import SeccionTrabajos from "./componentes/SeccionTrabajos/SeccionTrabajos";
 import SeccionContacto from "./componentes/SeccionContacto/SeccionContacto";
-import SeccionPromos from "./componentes/SeccionPromos/SeccionPromos";
 
 const App = () => {
 
