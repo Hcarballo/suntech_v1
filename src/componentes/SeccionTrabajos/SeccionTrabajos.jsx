@@ -1,28 +1,37 @@
 import './SeccionTrabajos.css';
-import work_1 from '../../assets/Trabajos/collage_cam_1.png';
-import work_2 from '../../assets/Trabajos/collage_funes_1.png';
-import work_3 from '../../assets/Trabajos/collage_roldan_1.png';
-import work_4 from '../../assets/Trabajos/dm_camaras.jpg';
-import work_5 from '../../assets/Trabajos/20250327_120527.webp';
-import work_6 from '../../assets/Trabajos/20250327_121523.webp';
-import work_7 from '../../assets/Trabajos/20250403_130845.jpg';
-import work_8 from '../../assets/Trabajos/20250403_192355.jpg';
-import work_9 from '../../assets/Trabajos/20250405_184612.jpg';
-import work_10 from '../../assets/Trabajos/20250405_191123.jpg';
-import work_11 from '../../assets/Trabajos/20250405_191159.jpg';
-import work_12 from '../../assets/Trabajos/20250412_122915.webp';
-import work_13 from '../../assets/Trabajos/20250412_122953.webp';
-import work_14 from '../../assets/Trabajos/Image_1744408737412.jpg';
-import work_15 from '../../assets/Trabajos/Screenshot_20250411_172806_Gallery.jpg';
-import work_16 from '../../assets/Trabajos/Screenshot_20250411_173526_Gallery.jpg';
-import work_17 from '../../assets/Trabajos/don_mateo.jpg';
-import work_18 from '../../assets/Trabajos/inst_SN1.jpg';
-import work_19 from '../../assets/Trabajos/inst_SN2.jpg';
-import work_20 from '../../assets/Trabajos/inst_SN3.jpg';
-import work_21 from '../../assets/Trabajos/inst_SN4.jpg';
-import work_22 from '../../assets/Trabajos/inst_SN5.jpg';
-import work_23 from '../../assets/Trabajos/inv_deyeSN.jpg';
 
+import work_1 from '../../assets/Trabajos/20250327_120527.webp';
+import work_2 from '../../assets/Trabajos/20250327_121523.webp';
+import work_3 from '../../assets/Trabajos/20250403_130845.jpg';
+import work_4 from '../../assets/Trabajos/20250403_192355.jpg';
+import work_5 from '../../assets/Trabajos/20250405_184612.jpg';
+import work_6 from '../../assets/Trabajos/20250405_191123.jpg';
+import work_7 from '../../assets/Trabajos/20250405_191159.jpg';
+import work_8 from '../../assets/Trabajos/20250412_122915.webp';
+import work_9 from '../../assets/Trabajos/20250412_122953.webp';
+import work_10 from '../../assets/Trabajos/20250602_165754.jpg';
+import work_11 from '../../assets/Trabajos/bomba_pile_fh.png';
+import work_12 from '../../assets/Trabajos/carportsolar.png';
+import work_13 from '../../assets/Trabajos/collage_cam_1.png';
+import work_14 from '../../assets/Trabajos/collage_funes_1.png';
+import work_15 from '../../assets/Trabajos/collage_roldan_1.png';
+import work_16 from '../../assets/Trabajos/conexion.png';
+import work_17 from '../../assets/Trabajos/dm_camaras.jpg';
+import work_18 from '../../assets/Trabajos/don_mateo_paneles.png';
+import work_19 from '../../assets/Trabajos/granja.png';
+import work_20 from '../../assets/Trabajos/inst_SN1.jpg';
+import work_21 from '../../assets/Trabajos/inst_SN3.jpg';
+import work_22 from '../../assets/Trabajos/inst_SN4.jpg';
+import work_23 from '../../assets/Trabajos/inst_SN5.jpg';
+import work_24 from '../../assets/Trabajos/inv_deyeSN.jpg';
+import work_25 from '../../assets/Trabajos/jhoni.png';
+import work_26 from '../../assets/Trabajos/motorhome_ad.png';
+import work_27 from '../../assets/Trabajos/motorhome.png';
+import work_28 from '../../assets/Trabajos/raul.png';
+import work_29 from '../../assets/Trabajos/san_sebastian.jpg';
+import work_30 from '../../assets/Trabajos/Screenshot_20250411_172806_Gallery.jpg';
+import work_31 from '../../assets/Trabajos/yo.jpg';
+import work_32 from '../../assets/Trabajos/oncativo.png';
 import { useRef } from 'react';
 
 const SeccionTrabajos = () => {
@@ -70,6 +79,15 @@ const SeccionTrabajos = () => {
                         <img className='collage-img' src={work_21} alt="Proyecto 4" />
                         <img className='collage-img' src={work_22} alt="Proyecto 4" />
                         <img className='collage-img' src={work_23} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_24} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_25} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_26} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_27} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_28} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_29} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_30} alt="Proyecto 4" />
+                        <img className='collage-img' src={work_31} alt="Proyecto 4" />   
+                        <img className='collage-img' src={work_32} alt="Proyecto 4" />                   
                     </div>
                 </div>
 
