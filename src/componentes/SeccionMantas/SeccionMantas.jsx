@@ -7,7 +7,7 @@ const SeccionMantas = () => {
     <section className="seccionmantas" id='mant'>
       <div className="overlayfour">
         <h1>Climatización de Piscinas</h1>        
-        <p>Disfrutá de tu pileta todo el año. Las mantas térmicas solares aprovechan la energía del sol para calentar el agua de tu pileta de manera eficiente. Reducí el consumo energético, evitá pérdidas de calor y mantené el agua a la temperatura perfecta sin gastar de más.</p>
+        <p>Disfrutá de tu pileta todo el año. Las bombas de calor Wega Energy para climatización de piscinas son la solución ideal para alargar la temporada de disfrute de tu pileta, proporcionando un ambiente cálido y confortable</p>
         <button onClick={() => navigate('/infomantas')} className="btn btn-primary btninfo">
           Más info
         </button>     

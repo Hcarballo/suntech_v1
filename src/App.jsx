@@ -12,6 +12,7 @@ import SeccionMantas from "./componentes/SeccionMantas/SeccionMantas"
 import SeccionThree from "./componentes/SeccionThree/SeccionThree";
 import SeccionNosotros from "./componentes/SeccionNosotros/SeccionNosotros";
 import SeccionMarcas from "./componentes/SeccionMarcas/SeccionMarcas";
+import SeccionLaSegunda from "./componentes/SeccionLaSegunda/SeccionLaSegunda";
 import SeccionTrabajos from "./componentes/SeccionTrabajos/SeccionTrabajos";
 import SeccionContacto from "./componentes/SeccionContacto/SeccionContacto";
 
@@ -24,12 +25,13 @@ const App = () => {
       <SeccionEstadisticas />
       <SeccionEmpresa />
       <SeccionPaneles />
-      <SeccionCamara />
       <SeccionTanques />
-      <SeccionBombas />
       <SeccionMantas />
+      <SeccionCamara />      
+      <SeccionBombas />      
       <SeccionThree />
-      <SeccionMarcas />      
+      <SeccionMarcas />
+      <SeccionLaSegunda/>      
       <SeccionTrabajos />     
       <SeccionNosotros />      
       <SeccionContacto />
