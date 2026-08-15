@@ -46,7 +46,6 @@
     color: #555;
 }
 
-
 /* =========================
    CELULAR
 ========================= */
@@ -54,25 +53,37 @@
 @media (max-width: 768px) {
 
     .contenido-seguros {
-        flex-direction: column;
-        gap: 30px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
 
-        text-align: center;
+        text-align: left;
     }
 
     .logo-seguros {
-        flex: none;
+        flex: 0 0 30%;
+        text-align: center;
     }
 
     .logo-seguros img {
-        max-width: 200px;
+        width: 100%;
+        max-width: 120px;
+    }
+
+    .texto-seguros {
+        flex: 1;
+        min-width: 0;
     }
 
     .texto-seguros h1 {
-        font-size: 26px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        line-height: 1.2;
     }
 
     .texto-seguros p {
-        font-size: 15px;
+        font-size: 13px;
+        line-height: 1.4;
     }
 }
