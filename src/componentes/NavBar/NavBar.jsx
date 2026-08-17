@@ -23,7 +23,7 @@ const Navbar = () => {
     <div className="encabezado">
       <div className="seccionlogo">
         <div className="logo">
-          <img className='logo' src={logo} alt="logo"/>
+          <img className='logo' src={logo} alt="logo" />
         </div>
         <div className="seccioninfo">
           <div className="d-flex flex-column gap-2 text-black">
@@ -42,11 +42,12 @@ const Navbar = () => {
         <ul className="nav-links">
           <li><a href="#inicio" onClick={(e) => handleAnchorClick(e, 'maps')}>Inicio</a></li>
           <li><a href="#pnls" onClick={(e) => handleAnchorClick(e, 'pnls')}>Fotovoltaica</a></li>
-          <li><a href="#cam" onClick={(e) => handleAnchorClick(e, 'cam')}>Videovigilancia</a></li>
-          <li><a href="#tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Termotanques</a></li>
-          <li><a href="#bom" onClick={(e) => handleAnchorClick(e, 'bom')}>Bombas de Agua</a></li>
+          <li><a href="#tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Cargadores Autos Eléctricos </a></li>
           <li><a href="#mant" onClick={(e) => handleAnchorClick(e, 'mant')}>Climatización de Piscinas</a></li>
-        {  /*<li>
+          <li><a href="#cam" onClick={(e) => handleAnchorClick(e, 'cam')}>Videovigilancia</a></li>
+          <li><a href="#bom" onClick={(e) => handleAnchorClick(e, 'bom')}>Bombas de Agua</a></li>
+
+          {  /*<li>
             <a
               href="#pro"
               onClick={(e) => handleAnchorClick(e, 'pro')}
@@ -57,7 +58,7 @@ const Navbar = () => {
           </li>
           <li ><a className='navbar__cart' href=""><CardWidget /></a></li> */}
           <li><a href="#nos" onClick={(e) => handleAnchorClick(e, 'nos')}>Nosotros</a></li>
-          <li><a href="#cont" onClick={(e) => handleAnchorClick(e, 'cont')}>Contacto</a></li>          
+          <li><a href="#cont" onClick={(e) => handleAnchorClick(e, 'cont')}>Contacto</a></li>
         </ul>
         <div className="hamburger" onClick={toggleSidebar}>
           <span></span>
@@ -71,10 +72,10 @@ const Navbar = () => {
         <ul>
           <li><a href="#inicio" onClick={(e) => handleAnchorClick(e, 'maps')}>Inicio</a></li>
           <li><a href="#pnls" onClick={(e) => handleAnchorClick(e, 'pnls')}>Fotovoltaica</a></li>
-          <li><a href="#cam" onClick={(e) => handleAnchorClick(e, 'cam')}>Videovigilancia</a></li>
-          <li><a href="#tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Termotanques</a></li>
-          <li><a href="#bom" onClick={(e) => handleAnchorClick(e, 'bom')}>Bombas de Agua</a></li>
+          <li><a href="#tan" onClick={(e) => handleAnchorClick(e, 'tan')}>Cargadores Autos Eléctricos </a></li>
           <li><a href="#mant" onClick={(e) => handleAnchorClick(e, 'mant')}>Climatización de Piscinas</a></li>
+          <li><a href="#cam" onClick={(e) => handleAnchorClick(e, 'cam')}>Videovigilancia</a></li>
+          <li><a href="#bom" onClick={(e) => handleAnchorClick(e, 'bom')}>Bombas de Agua</a></li>
           {/*<li>
             <a
               href="#pro"
@@ -87,7 +88,7 @@ const Navbar = () => {
             <li ><a className='navbar__cart' href=""><CardWidget /></a></li> */}
           <li><a href="#nos" onClick={(e) => handleAnchorClick(e, 'nos')}>Nosotros</a></li>
           <li><a href="#cont" onClick={(e) => handleAnchorClick(e, 'cont')}>Contacto</a></li>
-        
+
         </ul>
       </div>
 
